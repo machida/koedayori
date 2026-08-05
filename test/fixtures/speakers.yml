@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  family: one
+  name: MyString
+  slug: MyString
+  notify_at: 2026-08-05 23:36:50
+  notification_email: MyString
+  notification_enabled: false
+  active: false
+
+two:
+  family: two
+  name: MyString
+  slug: MyString
+  notify_at: 2026-08-05 23:36:50
+  notification_email: MyString
+  notification_enabled: false
+  active: false
