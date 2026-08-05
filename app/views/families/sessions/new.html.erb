@@ -1,0 +1,21 @@
+<div>
+  <h1 class="font-bold text-4xl">Families::Sessions#new</h1>
+  <p>Find me in app/views/families/sessions/new.html.erb</p>
+  <div>
+    <h1 class="font-bold text-4xl">ログイン</h1>
+
+    <%= form_with url: families_sessions_path, scope: :family do |form| %>
+      <div>
+        <%= form.label :aikotoba %>
+        <%= form.text_field :aikotoba %>
+      </div>
+
+      <div>
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+      </div>
+
+      <%= form.submit "ログイン" %>
+    <% end %>
+  </div>
+</div>

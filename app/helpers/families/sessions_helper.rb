@@ -1,0 +1,2 @@
+module Families::SessionsHelper
+end
