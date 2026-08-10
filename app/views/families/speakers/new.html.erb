@@ -1,0 +1,12 @@
+<div>
+    <h1 class="font-bold text-4xl">声を受け取りたい家族の新規登録</h1>
+
+    <%= form_with model: @speaker, url: families_speakers_path do |form| %>
+    <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <%= form.submit "登録する" %>
+    <% end %>
+</div>

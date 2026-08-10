@@ -3,5 +3,6 @@ class Family < ApplicationRecord
   validates :email, presence: true
   validates :aikotoba, presence: true
 
-  has_many :speakers
+  has_many :speakers, dependent: :destroy
+  has_many :posts, through: :speakers
 end

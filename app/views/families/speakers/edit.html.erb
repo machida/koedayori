@@ -1,0 +1,31 @@
+<div>
+    <h1 class="font-bold text-4xl"><%= @speaker.name %>さんの設定</h1>
+
+    <%= form_with model: @speaker, url: families_speaker_path(@speaker) do |form| %>
+    <h2>登録情報</h2>
+    <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <h2>画面通知</h2>
+    <p>ダッシュボードで未着通知をするか指定できます。指定しないことも可能です。</p>
+    <div>
+        <%= form.label :notifications_enabled %>
+        <%= form.radio_button :notifications_enabled, true %>　はい
+        <%= form.radio_button :notifications_enabled, false %>　いいえ
+    </div>
+
+    <h2>通知期限</h2>
+    <p>何時までに吹き込みをするかの通知時刻を指定してください。指定しないことも可能です。</p>
+    <div>
+        <%= form.label :notify_at %>
+        <%= form.select :notify_at, (0..23).map { |h| "#{h}:00" } ,selected: "#{@speaker.notify_at.hour}:00"%>
+    </div>
+
+    <%= form.submit "設定を更新する" %>
+    <% end %>
+
+    <h2>声の受け取りを終了する</h2>
+    <%= button_to "声の受け取りを終了する", deactivate_families_speaker_path(@speaker), method: :patch, data: { turbo_confirm: "本当に停止してよろしいですか？" } %>
+</div>

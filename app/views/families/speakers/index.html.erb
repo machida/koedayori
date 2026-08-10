@@ -1,4 +1,18 @@
 <div>
-  <h1 class="font-bold text-4xl">Families::Speakers#index</h1>
-  <p>Find me in app/views/families/speakers/index.html.erb</p>
+  <h1 class="font-bold text-4xl">ダッシュボード</h1>
+
+  <%= current_family.speakers.empty? ? "ご登録ありがとうございます。まずは以下のボタンよりこえを受け取りたいご家族を登録してください。": "" %>
+
+  <%= link_to "祖父母を追加する", new_families_speaker_path %>
+
+  <ul>
+    <% current_family.speakers.each do |speaker| %>
+      <li>
+      <%= link_to speaker.name, families_speaker_posts_path(speaker) %>
+      <%= speaker.notifications_needed? ? "未着" : ""%>
+      <%= speaker.posts.order(created_at: :desc).first&.played_at? ? "既読" : "未読"%>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to "設定", families_settings_path %>
 </div>

@@ -2,6 +2,7 @@ class Families::SessionsController < Families::ApplicationController
   skip_before_action :authenticate_family!
 
   def new
+    redirect_to families_speakers_path if current_family
   end
 
   def create
@@ -9,7 +10,7 @@ class Families::SessionsController < Families::ApplicationController
 
     if family&.authenticate(params[:family][:password])
       session[:family_id] = family.id
-      redirect_to root_path
+      redirect_to families_speakers_path
     else
       render :new
     end

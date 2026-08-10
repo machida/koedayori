@@ -1,46 +1,11 @@
 <div>
   <h1 class="font-bold text-4xl">Speakers#show</h1>
   <p>Find me in app/views/speakers/show.html.erb</p>
-    <div>
+    <div data-controller="recording" data-recording-slug-value="<%= params[:slug] %>">
       <h1 class="font-bold text-4xl">吹き込みページ</h1>
-      <button id="start-btn">録音開始</button>
-      <button id="stop-btn">録音停止</button>
-
-      <audio id="player" controls></audio>
+      <h2><%= @theme.title %></h2>
+      <button data-recording-target="startBtn" data-action="click->recording#start">録音開始</button>
+      <button data-recording-target="stopBtn" data-action="click->recording#stop">録音停止</button>
+      <audio data-recording-target="player" controls></audio>
     </div>
-    <script>
-      const startBtn = document.getElementById('start-btn');
-      const stopBtn = document.getElementById('stop-btn');
-      const player = document.getElementById('player');
-
-      let chunks = [];
-
-      startBtn.addEventListener('click', () => {
-        //getUserMediaを呼ぶ・成功すればrecorder
-        navigator.mediaDevices.getUserMedia({ audio: true })
-          .then((stream) => {
-            const recorder = new MediaRecorder(stream);
-
-            recorder.ondataavailable = (event) => {
-              chunks.push(event.data);
-            };
-
-            recorder.onstop = () => {
-              const blob = new Blob(chunks, { type: 'audio/webm' });
-              window.blob = blob;
-              console.log('録音できた', blob);
-              player.src = URL.createObjectURL(window.blob);
-              player.play();
-            };
-            
-            window.recorder = recorder;
-            recorder.start();
-          })
-      })
-
-      stopBtn.addEventListener('click', () => {
-        window.recorder.stop();
-      })
-      
-    </script>
 </div>
