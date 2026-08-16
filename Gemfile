@@ -68,3 +68,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem 'rails-i18n'
+
+gem 'kaminari', '~> 1.2.2'

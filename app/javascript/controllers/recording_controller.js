@@ -4,7 +4,10 @@ export default class extends Controller {
     static targets = [
         "startBtn",
         "stopBtn",
-        "player"
+        "toggleBtn",
+        "recordSection",
+        "completeSection",
+        "timer"
     ]
 
     static values = { slug: String }
@@ -13,6 +16,18 @@ export default class extends Controller {
     }
 
     start(){
+        this.startTime = Date.now()
+
+        this.timerId = setInterval(() => {
+            this.elapsedTime = Date.now() - this.startTime;
+
+            this.minutes = Math.floor((this.elapsedTime / 1000 / 60) % 60);
+            this.seconds = Math.floor((this.elapsedTime / 1000) % 60);
+            this.milliseconds = Math.floor((this.elapsedTime % 1000) / 10);
+
+            this.timerTarget.textContent = `${this.minutes}:${this.seconds}:${this.milliseconds}`
+        }, 10);
+
         navigator.mediaDevices.getUserMedia({ audio: true })
           .then((stream) => {
             this.chunks = [];
@@ -36,16 +51,33 @@ export default class extends Controller {
                 "X-CSRF-Token": csrfToken
             },
             body: formData,
+            })
+            .then(() => {
+                this.recordSectionTarget.classList.add("hidden");
+                this.completeSectionTarget.classList.remove("hidden");
             });
-
-            this.playerTarget.src = URL.createObjectURL(this.blob);
-            this.playerTarget.play();
             }
         this.recorder.start();
         });
     }
 
     stop() {
+        clearInterval(this.timerId)
         this.recorder.stop();
+    }
+
+    toggle() {
+        if (this.recorder && this.recorder.state === "recording") {
+            this.stop();
+        } else {
+            this.start();
+            this.toggleBtnTarget.className = "animate-pulse w-64 h-64 rounded-full bg-error"
+            this.toggleBtnTarget.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-white w-18 h-18 mx-auto mb-2">
+                <path d="M8.25 4.5a3.75 3.75 0 1 1 7.5 0v8.25a3.75 3.75 0 1 1-7.5 0V4.5Z"/>
+                <path d="M6 10.5a.75.75 0 0 1 .75.75v1.5a5.25 5.25 0 1 0 10.5 0v-1.5a.75.75 0 0 1 1.5 0v1.5a6.751 6.751 0 0 1-6 6.709v2.291h3a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h3v-2.291a6.751 6.751 0 0 1-6-6.709v-1.5A.75.75 0 0 1 6 10.5Z"/>
+            </svg>
+            <p class="text-white text-2xl font-bold">ふきこみ中</p>`
+        }
     }
 }

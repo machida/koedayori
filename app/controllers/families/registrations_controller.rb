@@ -11,7 +11,7 @@ class Families::RegistrationsController < Families::ApplicationController
     if @family.save
       redirect_to new_families_session_path, notice: "登録が完了しました。ログインしてください。"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

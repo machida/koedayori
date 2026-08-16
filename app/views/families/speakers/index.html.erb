@@ -1,18 +1,46 @@
-<div>
-  <h1 class="font-bold text-4xl">ダッシュボード</h1>
-
+<div class="w-full">
+  <%= render "shared/page_title", text: "ダッシュボード" %>
   <%= current_family.speakers.empty? ? "ご登録ありがとうございます。まずは以下のボタンよりこえを受け取りたいご家族を登録してください。": "" %>
-
-  <%= link_to "祖父母を追加する", new_families_speaker_path %>
-
-  <ul>
-    <% current_family.speakers.each do |speaker| %>
-      <li>
-      <%= link_to speaker.name, families_speaker_posts_path(speaker) %>
-      <%= speaker.notifications_needed? ? "未着" : ""%>
-      <%= speaker.posts.order(created_at: :desc).first&.played_at? ? "既読" : "未読"%>
+  <div class="divider"></div>
+    <h2 class="text-lg font-bold mb-3">今日の状況</h2>
+    <div class="card flex-col sm:flex-row items-center gap-8 p-6 bg-base-100 border border-base-300 w-full sm:w-fit">
+      <div class="relative w-32 h-32 shrink-0" style="background: <%= make_graph %>; border-radius: 9999px;">
+        <div class="absolute inset-3 rounded-full bg-base-100"></div>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6">
+        <div class="text-center">
+          <div class="badge badge-error mb-2">! 未着</div>
+          <p class="text-4xl font-bold"><%= current_family.status_for_dashboard[:needs_attention] %></p>
+        </div>
+        <div class="text-center">
+          <div class="badge badge-warning mb-2">! 未確認</div>
+          <p class="text-4xl font-bold"><%= current_family.status_for_dashboard[:needs_read] %></p>
+        </div>
+        <div class="text-center">
+          <div class="badge badge-success mb-2">✓ 確認済み</div>
+          <p class="text-4xl font-bold"><%= current_family.status_for_dashboard[:confirmed] %></p>
+        </div>
+      </div>
+    </div>
+  <div class="divider"></div>
+  <%= link_to "祖父母を追加する", new_families_speaker_path, class: "btn btn-primary text-lg mb-6" %>
+  <ul class="flex flex-col md:flex-row gap-4 flex-wrap items-stretch">
+    <% current_family.speakers.order(active: :desc).each do |speaker| %>
+      <li class="card bg-base-100 border border-base-300 shadow-sm w-full md:w-80 transition hover:shadow-lg hover:scale-105 <%= "opacity-50" unless speaker.active? %>">
+        <%= link_to families_speaker_posts_path(speaker), class: "card-body h-32" do %>
+          <% if speaker.show_read_status? %>
+            <div class="badge <%= speaker.played? ? "badge-success" : "badge-warning" %>">
+              <%= speaker.played? ? "✓ 確認済み" : "! 未確認" %>
+            </div>
+          <% end %>
+            <% if speaker.notifications_needed? %>
+              <div class="badge badge-error">
+                ! 未着
+              </div>
+            <% end %>
+          <h2 class="card-title"><%= speaker.name %></h2>
+        <% end %>
       </li>
     <% end %>
   </ul>
-  <%= link_to "設定", families_settings_path %>
 </div>
