@@ -7,7 +7,9 @@ export default class extends Controller {
         "toggleBtn",
         "recordSection",
         "completeSection",
-        "timer"
+        "timer",
+        "errorSection",
+        "retryBtn"
     ]
 
     static values = { slug: String }
@@ -55,9 +57,17 @@ export default class extends Controller {
             .then(() => {
                 this.recordSectionTarget.classList.add("hidden");
                 this.completeSectionTarget.classList.remove("hidden");
+            })
+            .catch(error => {
+                this.errorSectionTarget.classList.remove("hidden");
+                this.recordSectionTarget.classList.add("hidden");
             });
             }
         this.recorder.start();
+        })
+        .catch(error => {
+            this.errorSectionTarget.classList.remove("hidden");
+            this.recordSectionTarget.classList.add("hidden");
         });
     }
 
@@ -79,5 +89,10 @@ export default class extends Controller {
             </svg>
             <p class="text-white text-2xl font-bold">ふきこみ中</p>`
         }
+    }
+
+    retry() {
+        this.errorSectionTarget.classList.add("hidden")
+        this.recordSectionTarget.classList.remove("hidden")
     }
 }

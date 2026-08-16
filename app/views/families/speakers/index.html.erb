@@ -23,7 +23,7 @@
       </div>
     </div>
   <div class="divider"></div>
-  <%= link_to "祖父母を追加する", new_families_speaker_path, class: "btn btn-primary text-lg mb-6" %>
+  <%= link_to "ご家族を追加する", new_families_speaker_path, class: "btn btn-primary text-lg mb-6" %>
   <ul class="flex flex-col md:flex-row gap-4 flex-wrap items-stretch">
     <% current_family.speakers.order(active: :desc).each do |speaker| %>
       <li class="card bg-base-100 border border-base-300 shadow-sm w-full md:w-80 transition hover:shadow-lg hover:scale-105 <%= "opacity-50" unless speaker.active? %>">

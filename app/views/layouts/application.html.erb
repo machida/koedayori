@@ -23,6 +23,7 @@
     <%= javascript_importmap_tags %>
   </head>
   <body class="min-h-screen flex flex-col">
+  <% unless content_for?(:hide_header) %>
     <%if current_family %>
     <div class="navbar bg-primary shadow-sm">
       <div class="container mx-auto px-5 flex">
@@ -47,6 +48,21 @@
         </div>
       </div>
     </div>
+    <% else %>
+    <div class="navbar bg-primary shadow-sm">
+      <div class="container mx-auto px-5 flex">
+        <div class="navbar-start">
+          <%= link_to "こえだより", root_path, class: "text-xl text-white" %>
+        </div>
+        <div class="navbar-end gap-4">
+          <div class="hidden sm:flex items-center gap-4">
+            <%= link_to("新規登録", new_families_registration_path, class: "btn btn-primary") %>
+            <%= link_to("ログイン", new_families_session_path, class: "btn btn-neutral") %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
     <% end %>
     <main class="container mx-auto px-5 flex flex-1 mt-8">
       <%= yield %>

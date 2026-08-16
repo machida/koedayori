@@ -3,13 +3,7 @@
 
     <%= render "shared/page_title", text: "ログイン" %>
 
-    <% if flash[:alert] %>
-      <div id="error_explanation">
-        <ul class="text-sm w-full text-error">
-          <li>💡 <%= flash[:alert] %></li>
-        </ul>
-      </div>
-    <% end %>
+    <%= render "shared/error_messages", messages: [flash[:alert]].compact %>
 
     <%= form_with url: families_sessions_path, class: "w-full", model: Family.new do |form| %>
       <div>

@@ -36,9 +36,9 @@ class Families::SpeakersController < Families::ApplicationController
     @speaker = current_family.speakers.new(speakers_params)
 
     if @speaker.save
-      redirect_to families_speakers_path(@speaker), notice: "ご家族の登録が完了しました。"
+      redirect_to families_speaker_path(@speaker), notice: "ご家族の登録が完了しました。"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
