@@ -54,18 +54,27 @@ export default class extends Controller {
             },
             body: formData,
             })
-            .then(() => {
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                if (data.status === "ok") {
                 this.recordSectionTarget.classList.add("hidden");
                 this.completeSectionTarget.classList.remove("hidden");
+                } else {
+                this.errorSectionTarget.classList.remove("hidden");
+                this.recordSectionTarget.classList.add("hidden");
+            }
             })
             .catch(error => {
                 this.errorSectionTarget.classList.remove("hidden");
                 this.recordSectionTarget.classList.add("hidden");
-            });
+            })
             }
-        this.recorder.start();
+            this.recorder.start();
         })
         .catch(error => {
+            clearInterval(this.timerId)
             this.errorSectionTarget.classList.remove("hidden");
             this.recordSectionTarget.classList.add("hidden");
         });

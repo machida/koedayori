@@ -21,9 +21,14 @@ class FamilyTest < ActiveSupport::TestCase
     assert_not family.valid?
   end
 
-  test "passwordの文字数が８文字以下で無効" do
-    family = Family.new(email: "test@test.com", aikotoba: "aaa", password: "aaa")
+  test "passwordの文字数が７文字で無効" do
+    family = Family.new(email: "test@test.com", aikotoba: "aaa", password: "aaaaaaa")
     assert_not family.valid?
+  end
+
+  test "passwordの文字数が８文字以上で有効" do
+    family = Family.new(email: "test@test.com", aikotoba: "aaa", password: "aaaaaaaa")
+    assert family.valid?
   end
 
   test "Speakerが0人の場合、全部0件" do

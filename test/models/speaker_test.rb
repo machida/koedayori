@@ -7,7 +7,7 @@ class SpeakerTest < ActiveSupport::TestCase
   end
 
   test "activeがfalseなら、notifications_needed?はfalse" do
-    speaker = Speaker.new(family: families(:one), name: "テスト", notifications_enabled: false, active: true, notify_at: Time.current)
+    speaker = Speaker.new(family: families(:one), name: "テスト", notifications_enabled: true, active: false, notify_at: Time.current)
     assert_not speaker.notifications_needed?
   end
 
