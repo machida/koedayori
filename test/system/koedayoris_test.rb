@@ -1,7 +1,7 @@
 require "application_system_test_case"
 
 class KoedayorisTest < ApplicationSystemTestCase
-  test "録音ページを開くと、テーマ名が表示される" do
+  test "録音ページが表示される" do
     family = Family.create!(email: "test@test.com", aikotoba: "aaa", password: "password123")
     speaker = Speaker.create!(family: family, name: "テスト太郎")
 

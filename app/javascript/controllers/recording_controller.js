@@ -27,11 +27,12 @@ export default class extends Controller {
             this.seconds = Math.floor((this.elapsedTime / 1000) % 60);
             this.milliseconds = Math.floor((this.elapsedTime % 1000) / 10);
 
-            this.timerTarget.textContent = `${this.minutes}:${this.seconds}:${this.milliseconds}`
+            this.timerTarget.textContent = `${this.minutes}:${this.seconds.toString().padStart(2,"0")}:${this.milliseconds.toString().padStart(2,"0")}`
         }, 10);
 
         navigator.mediaDevices.getUserMedia({ audio: true })
           .then((stream) => {
+            this.stream = stream;
             this.chunks = [];
             this.recorder = new MediaRecorder(stream);
 
@@ -81,8 +82,11 @@ export default class extends Controller {
     }
 
     stop() {
-        clearInterval(this.timerId)
+        clearInterval(this.timerId);
         this.recorder.stop();
+        this.stream.getTracks().forEach((track) => {
+            track.stop()
+        })
     }
 
     toggle() {
@@ -96,12 +100,25 @@ export default class extends Controller {
                 <path d="M8.25 4.5a3.75 3.75 0 1 1 7.5 0v8.25a3.75 3.75 0 1 1-7.5 0V4.5Z"/>
                 <path d="M6 10.5a.75.75 0 0 1 .75.75v1.5a5.25 5.25 0 1 0 10.5 0v-1.5a.75.75 0 0 1 1.5 0v1.5a6.751 6.751 0 0 1-6 6.709v2.291h3a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h3v-2.291a6.751 6.751 0 0 1-6-6.709v-1.5A.75.75 0 0 1 6 10.5Z"/>
             </svg>
-            <p class="text-white text-2xl font-bold">ふきこみ中</p>`
+            <p class="text-white text-2xl font-bold">ふきこみ中</p>
+            `
         }
     }
 
     retry() {
         this.errorSectionTarget.classList.add("hidden")
         this.recordSectionTarget.classList.remove("hidden")
+        this.toggleBtnTarget.className = "w-64 h-64 rounded-full bg-success"
+        this.toggleBtnTarget.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-white w-18 h-18 mx-auto mb-2">
+            <path d="M8.25 4.5a3.75 3.75 0 1 1 7.5 0v8.25a3.75 3.75 0 1 1-7.5 0V4.5Z"/>
+            <path d="M6 10.5a.75.75 0 0 1 .75.75v1.5a5.25 5.25 0 1 0 10.5 0v-1.5a.75.75 0 0 1 1.5 0v1.5a6.751 6.751 0 0 1-6 6.709v2.291h3a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h3v-2.291a6.751 6.751 0 0 1-6-6.709v-1.5A.75.75 0 0 1 6 10.5Z"/>
+        </svg>
+        <p class="text-white text-2xl font-bold">ここを押して<br>こえをふきこむ</p>
+        `
+        this.timerTarget.textContent = `0:00:00`
+
+        this.recorder = null;
+        this.stream = null;
     }
 }

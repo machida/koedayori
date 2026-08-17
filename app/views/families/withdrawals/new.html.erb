@@ -21,6 +21,6 @@
     </span>
   </div>
 
-  <%= link_to "退会する", families_withdrawals_path, class: "btn btn-error w-full mt-4", method: :post, data: { turbo_confirm: "本当に退会しますか？" } %>
+  <%= link_to "退会する", families_withdrawals_path, class: "btn btn-error w-full mt-4", data: { turbo_confirm: "本当に退会しますか？", turbo_method: :post } %>
   </div>
 </div>

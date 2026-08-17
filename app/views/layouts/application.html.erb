@@ -14,9 +14,8 @@
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="icon" href="<%= asset_path("favicon.png") %>" type="image/png">
+    <link rel="apple-touch-icon" href="<%= asset_path("favicon.png") %>">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
@@ -28,7 +27,10 @@
     <div class="navbar bg-primary shadow-sm">
       <div class="container mx-auto px-5 flex">
         <div class="navbar-start">
-          <%= link_to "こえだより", families_speakers_path, class: "text-xl text-white" %>
+          <%= link_to families_speakers_path, class: "flex items-center gap-2 text-xl text-white" do %>
+            <%= image_tag "koedayori_icon.png", class: "w-8 h-8" %>
+            こえだより
+          <% end %>
         </div>
         <div class="navbar-end gap-4">
           <div class="hidden sm:flex items-center gap-4">
@@ -39,7 +41,7 @@
 
           <div class="dropdown dropdown-end sm:hidden">
             <div tabindex="0" role="button" class="btn btn-ghost text-white text-xl">☰</div>
-            <ul tabindex="-1" class="dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm">
+            <ul tabindex="-1" class="dropdown-content menu bg-base-100 text-primary rounded-box z-10 w-52 p-2 shadow-sm">
               <li><%= link_to "ダッシュボード", families_speakers_path %></li>
               <li><%= link_to "設定", families_settings_path %></li>
               <li><%= current_family ? link_to("ログアウト", families_session_path(current_family), data: { turbo_method: :delete }) : link_to("ログイン", new_families_session_path) %></li>
@@ -52,12 +54,15 @@
     <div class="navbar bg-primary shadow-sm">
       <div class="container mx-auto px-5 flex">
         <div class="navbar-start">
-          <%= link_to "こえだより", root_path, class: "text-xl text-white" %>
+          <%= link_to root_path, class: "flex items-center gap-2 text-xl text-white" do %>
+            <%= image_tag "koedayori_icon.png", class: "w-8 h-8" %>
+            <%= image_tag "koedayori_logo_white.png", class: "w-32 mx-auto md:mx-0" %>
+          <% end %>
         </div>
         <div class="navbar-end gap-4">
           <div class="flex items-center gap-4">
             <%= link_to("新規登録", new_families_registration_path, class: "btn btn-primary") %>
-            <%= link_to("ログイン", new_families_session_path, class: "btn btn-neutral") %>
+            <%= link_to("ログイン", new_families_session_path, class: "btn btn-primary-content") %>
           </div>
         </div>
       </div>

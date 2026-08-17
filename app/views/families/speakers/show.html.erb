@@ -2,11 +2,11 @@
   <%= render "shared/page_title", text: "ご家族のセットアップ" %>
       <div class="card bg-white rounded-2xl shadow-sm p-8">
         <ul class="steps steps-vertical">
-            <li class="step step-primary"><span>登録したいご家族を<%= link_to "こちら", new_families_speaker_path, class: "whitespace-nowrap" %>から登録してください。</span></li>
-            <li class="step step-primary">登録後、再度このページを開き、スマートフォンで以下のQRコードを読み取ってください。</li>
+            <li class="step step-primary text-left"><span>登録したいご家族を<%= link_to "こちら", new_families_speaker_path, class: "whitespace-nowrap" %>から登録してください。</span></li>
+            <li class="step step-primary text-left">登録後、再度このページを開き、スマートフォンで以下のQRコードを読み取ってください。</li>
         </ul>
 
-    <div class="ml-10">
+    <div class="ml-10 mt-4">
         <%= speaker_qrcode %>
     </div>
   <div class="divider my-2"></div>
