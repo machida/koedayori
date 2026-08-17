@@ -31,7 +31,7 @@ class Speaker < ApplicationRecord
     return :inactive unless active
     return :needs_attention if notifications_needed?
     return :needs_read if !played?
-    return :confirmed if played?
+    :confirmed if played?
   end
 
   private

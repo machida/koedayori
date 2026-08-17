@@ -6,7 +6,7 @@ class Families::PlaybacksControllerTest < ActionDispatch::IntegrationTest
     speaker = Speaker.create!(family: family, name: "テスト太郎")
     post_record = speaker.posts.create!(created_at: Time.current)
 
-    post families_sessions_path, params: { family: { aikotoba: "aaa", password: "password123" }}
+    post families_sessions_path, params: { family: { aikotoba: "aaa", password: "password123" } }
     post "/families/playbacks/#{post_record.id}"
 
     assert_response :ok

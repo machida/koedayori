@@ -25,7 +25,7 @@ class Families::SpeakersController < Families::ApplicationController
   end
 
   def edit
-    @speaker = current_family.speakers.find(params[:id])   
+    @speaker = current_family.speakers.find(params[:id])
   end
 
   def new

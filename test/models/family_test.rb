@@ -33,7 +33,7 @@ class FamilyTest < ActiveSupport::TestCase
 
   test "Speakerが0人の場合、全部0件" do
     family = Family.create(email: "test@test.com", aikotoba: "aaa", password: "password123")
-    assert_equal({ needs_attention: 0, needs_read: 0, confirmed: 0}, family.status_for_dashboard)
+    assert_equal({ needs_attention: 0, needs_read: 0, confirmed: 0 }, family.status_for_dashboard)
   end
 
   test "Speakerが３人の場合、全部で３件" do
@@ -41,6 +41,6 @@ class FamilyTest < ActiveSupport::TestCase
     Speaker.create(family: family, name: "テスト一郎", notifications_enabled: false, active: true)
     Speaker.create(family: family, name: "テスト二郎", notifications_enabled: false, active: true)
     Speaker.create(family: family, name: "テスト三郎", notifications_enabled: false, active: true)
-    assert_equal({ needs_attention: 0, needs_read: 3, confirmed: 0}, family.status_for_dashboard)
+    assert_equal({ needs_attention: 0, needs_read: 3, confirmed: 0 }, family.status_for_dashboard)
   end
 end

@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   get "speakers/:slug" => "speakers#show", as: :speaker
   post "speakers/:slug/posts" => "posts#create"
   namespace :families do
-    resources :sessions, only: [:new, :create, :destroy]
-    resources :registrations, only: [:new, :create]
-    resources :settings, only: [:index]
-    resources :withdrawals, only: [:new, :create]
+    resources :sessions, only: [ :new, :create, :destroy ]
+    resources :registrations, only: [ :new, :create ]
+    resources :settings, only: [ :index ]
+    resources :withdrawals, only: [ :new, :create ]
     post "playbacks/:post_id" => "playbacks#create"
-    resources :speakers, only: [:index, :new, :create, :show, :edit, :update] do
-      resources :posts, only: [:index]
+    resources :speakers, only: [ :index, :new, :create, :show, :edit, :update ] do
+      resources :posts, only: [ :index ]
       member do
         patch "deactivate"
       end
