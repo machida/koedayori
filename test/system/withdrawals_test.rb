@@ -19,7 +19,7 @@ class WithdrawalsTest < ApplicationSystemTestCase
 
     page.execute_script("Turbo.setConfirmMethod(() => Promise.resolve(true))")
     click_on "退会する"
-    
+
     assert_text "大切な人の「こえ」で"
   end
 end

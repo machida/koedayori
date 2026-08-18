@@ -19,7 +19,7 @@ class PlaybacksTest < ApplicationSystemTestCase
     click_on "テスト太郎"
 
     find("[data-playback-target='playButton']").click
-    
+
     assert_text "既読"
   end
 end
