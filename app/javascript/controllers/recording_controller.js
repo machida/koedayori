@@ -67,14 +67,14 @@ export default class extends Controller {
                 this.recordSectionTarget.classList.add("hidden");
             }
             })
-            .catch(error => {
+            .catch(() => {
                 this.errorSectionTarget.classList.remove("hidden");
                 this.recordSectionTarget.classList.add("hidden");
             })
             }
             this.recorder.start();
         })
-        .catch(error => {
+        .catch(() => {
             clearInterval(this.timerId)
             this.errorSectionTarget.classList.remove("hidden");
             this.recordSectionTarget.classList.add("hidden");
