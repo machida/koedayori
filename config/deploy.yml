@@ -7,7 +7,7 @@ image: oyamairishitomi/koedayori
 # Deploy to these servers.
 servers:
   web:
-    - localhost
+    - 160.251.175.222
   # job:
   #   hosts:
   #     - 192.168.0.1
