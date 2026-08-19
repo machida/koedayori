@@ -83,6 +83,7 @@ jobs:
         run: npx eslint .
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     services:
       postgres:
@@ -102,7 +103,7 @@ jobs:
 
     steps:
       - name: Install packages
-        run: sudo DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a apt-get update && sudo DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a apt-get install --no-install-recommends -y libpq-dev libvips
+        run: sudo DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=10 -o Acquire::https::Timeout=10 update && sudo DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=10 -o Acquire::https::Timeout=10 install --no-install-recommends -y libpq-dev libvips
 
       - name: Checkout code
         uses: actions/checkout@v6
@@ -122,6 +123,7 @@ jobs:
 
   system-test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     services:
       postgres:
@@ -141,7 +143,7 @@ jobs:
 
     steps:
       - name: Install packages
-        run: sudo DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a apt-get update && sudo DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a apt-get install --no-install-recommends -y libpq-dev libvips
+        run: sudo DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=10 -o Acquire::https::Timeout=10 update && sudo DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=10 -o Acquire::https::Timeout=10 install --no-install-recommends -y libpq-dev libvips
 
       - name: Checkout code
         uses: actions/checkout@v6
