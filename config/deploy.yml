@@ -107,7 +107,7 @@ ssh:
 accessories:
   db:
     image: postgres:16
-    host: localhost
+    host: 160.251.175.222
     port: "127.0.0.1:5433:5432"
     env:
       clear:
