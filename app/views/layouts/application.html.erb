@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Koedayori" %></title>
+    <title><%= content_for(:title) || "こえだより｜声でつながる、やさしい安心。" %></title>
+    <meta name="description" content="離れて暮らすご家族の声を録音して届ける、シンプルな声のメッセージサービス。かんたん録音・スマホだけで完結。">
+    <meta name="keywords" content="こえだより,見守り,実家,離れて暮らす家族,声のメッセージ,高齢者,安否確認">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Koedayori">
     <meta name="mobile-web-app-capable" content="yes">
+
+    <meta property="og:title" content="こえだより｜声でつながる、やさしい安心。">
+    <meta property="og:description" content="離れて暮らすご家族の声を録音して届ける、シンプルな声のメッセージサービス。かんたん録音・スマホだけで完結。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://koe.life">
+    <meta property="og:image" content="<%= image_url("koedayori_sns.png") %>">
+    <meta property="og:site_name" content="こえだより">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="こえだより｜声でつながる、やさしい安心。">
+    <meta name="twitter:description" content="離れて暮らすご家族の声を録音して届ける、シンプルな声のメッセージサービス。かんたん録音・スマホだけで完結。">
+    <meta name="twitter:image" content="<%= image_url("koedayori_sns.png") %>">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -74,8 +89,10 @@
     </main>
   
   <footer class="footer items-center mx-auto container mx-auto px-5 py-6 bg-base-200 text-base-content mt-auto rounded-t-2xl">
-  <div class="items-center grid-flow-col">
+  <div class="items-center grid-flow-col gap-4">
     <p class="text-sm opacity-70">© 2026 こえだより</p>
+    <%= link_to "プライバシーポリシー", privacy_path, class: "text-sm opacity-70" %>
+    <%= link_to "利用規約", terms_path, class: "text-sm opacity-70" %>
   </div>
 </footer>
 

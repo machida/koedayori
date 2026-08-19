@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get "privacy" => "static_pages#privacy"
+  get "terms" => "static_pages#terms"
+
   root "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
