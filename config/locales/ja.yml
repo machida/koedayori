@@ -38,6 +38,8 @@ ja:
         email: "メールアドレス"
         aikotoba: "あいことば"
         password: "パスワード"
+        privacy_agreement: "プライバシーポリシー"
+        terms_agreement: "利用規約"
   views:
     pagination:
       first: "&laquo; 最初"
@@ -45,3 +47,4 @@ ja:
       next: "次 &rsaquo;"
       previous: "&lsaquo; 前"
       truncate: "&hellip;"
+  
