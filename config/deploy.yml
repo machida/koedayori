@@ -26,6 +26,7 @@ servers:
 proxy:
   run:
     http_port: 8080
+    https_port: 8443
 
 
 # Where you keep your container images.
