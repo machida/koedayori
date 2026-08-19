@@ -3,6 +3,8 @@ class Family < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :aikotoba, presence: true
   validates :password, length: { minimum: 8 }, allow_nil: false
+  validates :privacy_agreement, acceptance: true
+  validates :terms_agreement, acceptance: true
 
   has_many :speakers, dependent: :destroy
   has_many :posts, through: :speakers

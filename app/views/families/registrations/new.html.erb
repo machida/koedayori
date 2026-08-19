@@ -45,6 +45,19 @@
         </fieldset>
       </div>
 
+      <div>
+        <fieldset class="fieldset">
+          <label class="label text-base mb-4">
+            <%= form.check_box :privacy_agreement %>
+            <%= link_to "プライバシーポリシー", privacy_path, target: "_blank", rel: "noopener", class: "link" %>に同意する
+          </label>
+          <label class="label text-base mb-4">
+            <%= form.check_box :terms_agreement %>
+            <%= link_to "利用規約", terms_path, target: "_blank", rel: "noopener", class: "link" %>に同意する
+          </label>
+        </fieldset>
+      </div>
+
       <%= form.submit "登録する", class: "btn btn-primary w-full"%>
     <% end %>
 </div>

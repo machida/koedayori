@@ -18,6 +18,6 @@ class Families::RegistrationsController < Families::ApplicationController
   private
 
   def family_params
-    params.require(:family).permit(:email, :aikotoba, :password)
+    params.require(:family).permit(:email, :aikotoba, :password, :privacy_agreement, :terms_agreement)
   end
 end
