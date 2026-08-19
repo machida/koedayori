@@ -26,7 +26,7 @@
             <span class="badge badge-success">必須</span>
           </div>
           <fieldset class="fieldset">
-            <p class="label whitespace-normal">あいことばは、複数人でログインするためにご家族間で共有するためのキーワードです。<br>今後、「あいことば」でログインをします。お好みの英数字。</p>
+            <%= render "shared/success_messages", messages: ["あいことばはご家族みんながログインするための英数字のフレーズです。こえを聞きたいご家族にパスワードとともに教えてください。"] , class: "mb-4" %>
           </fieldset>
           <%= form.text_field :aikotoba, class: "input mb-4 w-full", placeholder: "例）yamadafamily" %>
         </fieldset>
