@@ -71,10 +71,8 @@
 body {
   font-family:
     "Hiragino Maru Gothic ProN",
-    "Yu Gothic",
-    "YuGothic",
+    YuGothic,
     sans-serif;
-
   color: #26332E;
   background: #F7F9F7;
 }

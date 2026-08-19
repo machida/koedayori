@@ -8,6 +8,7 @@ export default class extends Controller {
     "progressBar",
     "readBadge",
     "seekHandle",
+    "seekInput"
   ];
 
   markPlayed() {
@@ -20,7 +21,10 @@ export default class extends Controller {
         "X-CSRF-Token": csrfToken,
       },
     })
-      .then(() => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("既読処理に失敗しました");
+        }
         this.readBadgeTarget.className = "badge badge-success";
         this.readBadgeTarget.textContent = "既読";
       })
@@ -50,15 +54,17 @@ export default class extends Controller {
       </svg>`;
   }
 
+  currentPosition() {
+    return (this.seekInputTarget.value / 100) * this.audioTarget.duration;
+  }
+  
   updateProgress() {
-    this.progressBarTarget.style.width =
-      (this.audioTarget.currentTime / this.audioTarget.duration) * 100 + "%";
+    const progress = (this.audioTarget.currentTime / this.audioTarget.duration) * 100;
+    this.seekInputTarget.value = progress;
+    this.progressBarTarget.style.width = progress + "%";
   }
 
   seek(event) {
-    const playPosition = event.currentTarget.getBoundingClientRect();
-    const lengthFromLeft = event.clientX - playPosition.left;
-    const clickPosition = lengthFromLeft / playPosition.width;
-    this.audioTarget.currentTime = clickPosition * this.audioTarget.duration;
+    this.audioTarget.currentTime = this.currentPosition();
   }
 }
