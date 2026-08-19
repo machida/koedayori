@@ -4,11 +4,12 @@
     <%= render "shared/page_title", text: "ログイン" %>
     <%= image_tag "koedayori_mv2.png", class: "w-96" %>
     <%= render "shared/error_messages", messages: [flash[:alert]].compact %>
+    <%= render "shared/success_messages", messages: [flash[:notice]].compact %>
 
     <%= form_with url: families_sessions_path, class: "w-full", model: Family.new do |form| %>
       <div>
         <%= form.label :aikotoba, class: "label text-base mb-4"  %>
-        <%= form.text_field :aikotoba, class: "input mb-4 w-full" , placeholder: "例）taro@example.com" %>
+        <%= form.text_field :aikotoba, class: "input mb-4 w-full" , placeholder: "例）yamadafamily" %>
       </div>
 
       <div>

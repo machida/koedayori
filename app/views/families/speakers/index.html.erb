@@ -1,29 +1,31 @@
 <div class="w-full">
   <%= render "shared/page_title", text: "ダッシュボード" %>
   <div class="divider"></div>
+  <% unless current_family.speakers.empty? %>
     <h2 class="text-lg font-bold mb-3">今日の状況</h2>
     <div class="card flex-col sm:flex-row items-center gap-8 p-6 bg-base-100 border border-base-300 w-full sm:w-fit">
       <div class="relative w-32 h-32 shrink-0" style="background: <%= make_graph %>; border-radius: 9999px;">
         <div class="absolute inset-3 rounded-full bg-base-100"></div>
       </div>
-      <div class="flex flex-wrap justify-center gap-6">
-        <div class="text-center">
-          <div class="badge badge-error mb-2">! 未着</div>
-          <p class="text-4xl font-bold"><%= current_family.status_for_dashboard[:needs_attention] %></p>
+        <div class="flex flex-wrap justify-center gap-6">
+          <div class="text-center">
+            <div class="badge badge-error mb-2">! 未着</div>
+            <p class="text-4xl font-bold"><%= current_family.status_for_dashboard[:needs_attention] %></p>
+          </div>
+          <div class="text-center">
+            <div class="badge badge-warning mb-2">! 未確認</div>
+            <p class="text-4xl font-bold"><%= current_family.status_for_dashboard[:needs_read] %></p>
+          </div>
+          <div class="text-center">
+            <div class="badge badge-success mb-2">✓ 確認済み</div>
+            <p class="text-4xl font-bold"><%= current_family.status_for_dashboard[:confirmed] %></p>
+          </div>
         </div>
-        <div class="text-center">
-          <div class="badge badge-warning mb-2">! 未確認</div>
-          <p class="text-4xl font-bold"><%= current_family.status_for_dashboard[:needs_read] %></p>
-        </div>
-        <div class="text-center">
-          <div class="badge badge-success mb-2">✓ 確認済み</div>
-          <p class="text-4xl font-bold"><%= current_family.status_for_dashboard[:confirmed] %></p>
-        </div>
-      </div>
     </div>
   <div class="divider"></div>
-  <div>
-    <%= current_family.speakers.empty? ? "ご登録ありがとうございます。まずは以下のボタンよりこえを受け取りたいご家族を登録してください。": "" %>
+  <% end %>
+  <div class="mb-4">
+    <%= current_family.speakers.empty? ? "ご登録ありがとうございます。まずは以下のボタンよりこえを受け取りたいご家族を登録してください。": ""%>
   </div>
   <%= link_to "ご家族を追加する", new_families_speaker_path, class: "btn btn-primary text-lg mb-6" %>
   <ul class="flex flex-col md:flex-row gap-4 flex-wrap items-stretch">
