@@ -2,19 +2,14 @@
   <div class="card flex-col items-center gap-8 p-6 bg-base-100 border border-base-300 w-full max-w-2xl">
 
     <%= render "shared/page_title", text: "ログイン" %>
-
-    <% if flash[:alert] %>
-      <div id="error_explanation">
-        <ul class="text-sm w-full text-error">
-          <li>💡 <%= flash[:alert] %></li>
-        </ul>
-      </div>
-    <% end %>
+    <%= image_tag "koedayori_mv2.png", class: "w-96" %>
+    <%= render "shared/error_messages", messages: [flash[:alert]].compact %>
+    <%= render "shared/success_messages", messages: [flash[:notice]].compact %>
 
     <%= form_with url: families_sessions_path, class: "w-full", model: Family.new do |form| %>
       <div>
         <%= form.label :aikotoba, class: "label text-base mb-4"  %>
-        <%= form.text_field :aikotoba, class: "input mb-4 w-full" , placeholder: "例）taro@example.com" %>
+        <%= form.text_field :aikotoba, class: "input mb-4 w-full" , placeholder: "例）yamadafamily" %>
       </div>
 
       <div>

@@ -1,6 +1,7 @@
 class Speaker < ApplicationRecord
   before_create :generate_slug
   belongs_to :family
+  validates :name, presence: true
 
   has_many :posts, dependent: :destroy
 
@@ -28,10 +29,9 @@ class Speaker < ApplicationRecord
 
   def status
     return :inactive unless active
-
     return :needs_attention if notifications_needed?
     return :needs_read if !played?
-    return :confirmed if played?
+    :confirmed if played?
   end
 
   private

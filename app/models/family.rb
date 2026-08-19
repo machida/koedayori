@@ -1,6 +1,6 @@
 class Family < ApplicationRecord
   has_secure_password
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
   validates :aikotoba, presence: true
   validates :password, length: { minimum: 8 }, allow_nil: false
 

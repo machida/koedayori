@@ -2,27 +2,30 @@
   <%= render "shared/page_title", text: "ご家族のセットアップ" %>
       <div class="card bg-white rounded-2xl shadow-sm p-8">
         <ul class="steps steps-vertical">
-            <li class="step step-primary"><span>登録したいご家族を<%= link_to "こちら", new_families_speaker_path, class: "whitespace-nowrap" %>から登録してください。</span></li>
-            <li class="step step-primary">登録後、再度このページを開き、スマートフォンで以下のQRコードを読み取ってください。</li>
+            <li class="step step-primary text-left"><span>登録したいご家族を<%= link_to "こちら", new_families_speaker_path, class: "whitespace-nowrap" %>から登録してください。</span></li>
+            <li class="step step-primary text-left">登録後、再度このページを開き、スマートフォンで以下のQRコードを読み取ってください。</li>
         </ul>
 
-    <div class="ml-10">
+    <div class="ml-10 mt-4">
         <%= speaker_qrcode %>
     </div>
+  <div class="divider my-2"></div>
 
-  <div role="alert" class="alert alert-info mt-4">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-    </svg>
-    <span>QRコードで読み込んだ録音ページをホーム画面に固定すると、ご家族がスムーズにアクセスできるようになります。</span>
-  </div>
-
+  <h2 class="text-lg font-bold mb-3 mt-6">ホーム画面への追加方法（推奨）</h2>
+  <p>QRコードで読み込んだ録音ページを以下の手順でホーム画面に固定すると、ご家族がスムーズにアクセスできるようになります。</p>
   <div class="tabs tabs-border mt-4">
     <input type="radio" name="my_tabs" class="tab" aria-label="iPhoneの場合(Safari)" checked="checked" />
     <div class="tab-content border-base-300 bg-base-100 p-10">
       <p>① Safariでこのページを開いた状態で、画面下の「共有」ボタン(四角に上矢印のマーク)をタップ</p>
       <p>② 一覧を下にスクロールし、「ホーム画面に追加」をタップ</p>
       <p>③ 右上の「追加」をタップ</p>
+      <p>④ テストで一度吹き込みを行い、ご家族に無事届くかご確認ください</p>
+      <div role="alert" class="alert alert-warning mt-4 text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+        </svg>
+          <p>初めて吹き込みをする際、スマートフォンから「マイクの使用を許可しますか？」と聞かれる場合があります。その際は「許可」を選んでください。</p>
+      </div>
     </div>
 
     <input type="radio" name="my_tabs" class="tab" aria-label="Androidの場合(Chrome)" />
@@ -30,6 +33,13 @@
       <p>① Chromeでこのページを開いた状態で、右上の「︙」(縦の三点リーダー)をタップ</p>
       <p>② 「ホーム画面に追加」をタップ</p>
       <p>③ 表示されたアイコン名を確認し、「追加」をタップ</p>
+      <p>④ テストで一度吹き込みを行い、ご家族に無事届くかご確認ください</p>
+      <div role="alert" class="alert alert-warning mt-4 text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+        </svg>
+          <p>初めて吹き込みをする際、スマートフォンから「マイクの使用を許可しますか？」と聞かれる場合があります。その際は「許可」を選んでください。</p>
+      </div>
     </div>
   </div>
 

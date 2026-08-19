@@ -69,6 +69,8 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'rails-i18n'
+gem "rails-i18n"
 
-gem 'kaminari', '~> 1.2.2'
+gem "kaminari", "~> 1.2.2"
+
+gem "aws-sdk-s3", "~> 1.225", require: false

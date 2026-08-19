@@ -11,6 +11,6 @@ def make_graph
 
   @cumulative_needs_read = @num_needs_attention + @num_needs_read
 
-  "conic-gradient(var(--color-warning) 0% #{@num_needs_attention}%, var(--color-base-300) #{@num_needs_attention}% #{@cumulative_needs_read}%, var(--color-success) #{@cumulative_needs_read}% 100%)"
+  "conic-gradient(var(--color-error) 0% #{@num_needs_attention}%, var(--color-warning) #{@num_needs_attention}% #{@cumulative_needs_read}%, var(--color-success) #{@cumulative_needs_read}% 100%)"
 end
 end

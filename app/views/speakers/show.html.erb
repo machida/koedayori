@@ -3,6 +3,10 @@
     <div data-controller="recording" data-recording-slug-value="<%= params[:slug] %>">
       <h1 class="font-bold text-4xl text-center mb-4">こえの吹き込み</h1>
       <p class="text-2xl font-bold mb-4 text-center">話す内容</p>
+      <div class="text-xl font-bold mb-4 text-center hidden" data-recording-target="errorSection">
+        ⚠️うまく届きませんでした。<br>ご家族に相談するか、もう一度吹き込んでください。
+        <button data-recording-target="retryBtn" data-action="click->recording#retry" class="btn btn-error">再度こえをふきこむ</button>
+      </div>
       <p class="text-3xl font-bold border-2 border-primary rounded-full px-6 py-2 block mb-4 text-center"><%= @theme.title %></p>
       <div data-recording-target="recordSection">
         <button data-recording-target="toggleBtn" data-action="click->recording#toggle" class="w-64 h-64 rounded-full bg-success">

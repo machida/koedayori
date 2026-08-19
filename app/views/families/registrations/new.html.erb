@@ -2,18 +2,11 @@
   <div class="card flex-col items-center gap-8 p-6 bg-base-100 border border-base-300 w-full max-w-2xl">
 
   <%= render "shared/page_title", text: "新規会員登録" %>
+  <%= image_tag "koedayori_mv2.png", class: "w-96" %>
   <p>たいせつなご家族の、たいせつなこえを受け取りませんか。</p>
   <div class="divider my-2"></div>
 
-  <% if @family.errors.any? %>
-    <div id="error_explanation">
-      <ul class="text-sm w-full text-error">
-        <% @family.errors.each do |error| %>
-          <li>💡 <%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/error_messages", messages: @family.errors.full_messages %>
 
     <%= form_with model: @family, class: "w-full", url: families_registrations_path do |form| %>
       <div>
