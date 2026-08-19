@@ -1,3 +1,4 @@
+<% content_for(:title, "#{@speaker.name}さんの設定｜こえだより") %>
 <div>
     <%= render "shared/page_title", text: "#{@speaker.name}さんの設定" %>
     <%= form_with model: @speaker, url: families_speaker_path(@speaker) do |form| %>

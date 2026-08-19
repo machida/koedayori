@@ -1,8 +1,9 @@
+<% content_for(:title, "ログイン｜こえだより") %>
 <div class="w-full flex justify-center items-center">
   <div class="card flex-col items-center gap-8 p-6 bg-base-100 border border-base-300 w-full max-w-2xl">
 
     <%= render "shared/page_title", text: "ログイン" %>
-    <%= image_tag "koedayori_mv2.png", class: "w-96" %>
+    <%= image_tag "koedayori_mv2.png", alt: "こえだよりのイメージ画像", class: "w-96" %>
     <%= render "shared/error_messages", messages: [flash[:alert]].compact %>
     <%= render "shared/success_messages", messages: [flash[:notice]].compact %>
 

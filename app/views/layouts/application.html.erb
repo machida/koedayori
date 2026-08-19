@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "こえだより｜声でつながる、やさしい安心。" %></title>
+    <title><%= content_for(:title) || "こえだより｜「こえ」でつながる、やさしい安心。" %></title>
     <meta name="description" content="離れて暮らすご家族の声を録音して届ける、シンプルな声のメッセージサービス。かんたん録音・スマホだけで完結。">
     <meta name="keywords" content="こえだより,見守り,実家,離れて暮らす家族,声のメッセージ,高齢者,安否確認">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,7 +9,7 @@
     <meta name="application-name" content="Koedayori">
     <meta name="mobile-web-app-capable" content="yes">
 
-    <meta property="og:title" content="こえだより｜声でつながる、やさしい安心。">
+    <meta property="og:title" content="こえだより｜「こえ」でつながる、やさしい安心。">
     <meta property="og:description" content="離れて暮らすご家族の声を録音して届ける、シンプルな声のメッセージサービス。かんたん録音・スマホだけで完結。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://koe.life">
@@ -17,7 +17,7 @@
     <meta property="og:site_name" content="こえだより">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="こえだより｜声でつながる、やさしい安心。">
+    <meta name="twitter:title" content="こえだより｜「こえ」でつながる、やさしい安心。">
     <meta name="twitter:description" content="離れて暮らすご家族の声を録音して届ける、シンプルな声のメッセージサービス。かんたん録音・スマホだけで完結。">
     <meta name="twitter:image" content="<%= image_url("koedayori_sns.png") %>">
 
@@ -43,7 +43,7 @@
       <div class="container mx-auto px-5 flex">
         <div class="navbar-start">
           <%= link_to families_speakers_path, class: "flex items-center gap-2 text-xl text-white" do %>
-            <%= image_tag "koedayori_icon.png", class: "w-8 h-8" %>
+            <%= image_tag "koedayori_icon.png", alt: "こえだよりのイメージマーク", class: "w-8 h-8" %>
             こえだより
           <% end %>
         </div>
@@ -70,8 +70,8 @@
       <div class="container mx-auto px-5 flex">
         <div class="navbar-start">
           <%= link_to root_path, class: "flex items-center gap-2 text-xl text-white" do %>
-            <%= image_tag "koedayori_icon.png", class: "w-8 h-8" %>
-            <%= image_tag "koedayori_logo_white.png", class: "w-32 mx-auto md:mx-0" %>
+            <%= image_tag "koedayori_icon.png", alt: "こえだよりのイメージマーク", class: "w-8 h-8" %>
+            <%= image_tag "koedayori_logo_white.png", alt: "タイトル「こえだより」", class: "w-32 mx-auto md:mx-0" %>
           <% end %>
         </div>
         <div class="navbar-end gap-4">
