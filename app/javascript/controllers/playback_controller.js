@@ -64,7 +64,7 @@ export default class extends Controller {
     this.progressBarTarget.style.width = progress + "%";
   }
 
-  seek(event) {
+  seek() {
     this.audioTarget.currentTime = this.currentPosition();
   }
 }
