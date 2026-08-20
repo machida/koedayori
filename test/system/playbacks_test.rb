@@ -14,7 +14,7 @@ class PlaybacksTest < ApplicationSystemTestCase
 
     click_button "ログイン"
 
-    assert_text "ダッシュボード"
+    assert_text "今日のこえ"
 
     click_on "テスト太郎"
 

@@ -11,6 +11,6 @@ class SessionsTest < ApplicationSystemTestCase
 
     click_button "ログイン"
 
-    assert_text "ダッシュボード"
+    assert_text "今日のこえ"
   end
 end
