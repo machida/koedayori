@@ -49,7 +49,7 @@
         </div>
         <div class="navbar-end gap-4">
           <div class="hidden sm:flex items-center gap-4">
-            <%= link_to "ダッシュボード", families_speakers_path, class: "whitespace-nowrap text-s text-neutral-content" %>
+            <%= link_to "今日のこえ", families_speakers_path, class: "whitespace-nowrap text-s text-neutral-content" %>
             <%= link_to "設定", families_settings_path, class: "whitespace-nowrap text-s text-neutral-content" %>
             <%= current_family ? link_to("ログアウト", families_session_path(current_family), data: { turbo_method: :delete }, class: "whitespace-nowrap btn btn-soft") : link_to("ログイン", new_families_session_path, class: "btn btn-neutral") %>
           </div>
@@ -57,7 +57,7 @@
           <div class="dropdown dropdown-end sm:hidden">
             <div tabindex="0" role="button" class="btn btn-ghost text-white text-xl">☰</div>
             <ul tabindex="-1" class="dropdown-content menu bg-base-100 text-primary rounded-box z-10 w-52 p-2 shadow-sm">
-              <li><%= link_to "ダッシュボード", families_speakers_path %></li>
+              <li><%= link_to "今日のこえ", families_speakers_path %></li>
               <li><%= link_to "設定", families_settings_path %></li>
               <li><%= current_family ? link_to("ログアウト", families_session_path(current_family), data: { turbo_method: :delete }) : link_to("ログイン", new_families_session_path) %></li>
             </ul>

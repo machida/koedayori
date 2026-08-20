@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :families do
     resources :sessions, only: [ :new, :create, :destroy ]
     resources :registrations, only: [ :new, :create ]
-    resources :settings, only: [ :index ]
+    resource :settings, only: [ :show, :update ]
     resources :withdrawals, only: [ :new, :create ]
     post "playbacks/:post_id" => "playbacks#create"
     resources :speakers, only: [ :index, :new, :create, :show, :edit, :update ] do
