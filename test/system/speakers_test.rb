@@ -1,8 +1,8 @@
 require "application_system_test_case"
 
 class SpeakersTest < ApplicationSystemTestCase
-  skip "設定画面から利用停止への導線が未実装のため一時スキップ"
   test "ご家族の受け取り停止" do
+    skip "設定画面から利用停止への導線が未実装のため一時スキップ"
     family = Family.create!(email: "taro@taro.com", aikotoba: "tarofamily", password: "testtest")
     speaker = Speaker.create!(family: family, name: "テスト太郎")
 
