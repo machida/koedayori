@@ -1,5 +1,8 @@
+<%# これは使用しない可能性が高い
+
 <% content_for(:title, "#{@speaker.name}さんの設定｜こえだより") %>
 <div>
+    使用しない可能性が高い
     <%= render "shared/page_title", text: "#{@speaker.name}さんの設定" %>
     <%= form_with model: @speaker, url: families_speaker_path(@speaker) do |form| %>
 
@@ -58,4 +61,4 @@
 
     <%= form.submit "設定を更新する", class: "btn btn-primary" %>
     <% end %>
-</div>
+</div> %>

@@ -1,5 +1,6 @@
 <% content_for(:title, "今日のこえ｜こえだより") %>
 <div class="w-full">
+  <%= render "shared/success_messages", messages: [flash[:notice]].compact , class: "mb-4" %>
   <%= render "shared/page_title", text: "今日のこえ" %>
   <%= Time.zone.now.strftime("%Y/%m/%d %H:%M") %>
   <div class="divider"></div>
@@ -62,13 +63,17 @@
   <%= link_to "こえを届ける人を追加する", new_families_speaker_path, class: "btn btn-primary text-lg mb-6" %>
   <ul class="flex flex-col md:flex-row gap-4 flex-wrap items-stretch">
     <% current_family.speakers.order(active: :desc).each do |speaker| %>
-      <% border_color = case speaker.status
-         when :needs_read then "border-l-warning"
-         when :needs_attention then "border-l-error"
-         when :confirmed then "border-l-success"
-         when :inactive then "border-l-base-300"
-         when :waiting then "border-l-primary"
-         end %>
+      <% border_color = if !speaker.notifications_enabled
+            "border-l-base-300"
+          else
+            case speaker.status
+            when :needs_read then "border-l-warning"
+            when :needs_attention then "border-l-error"
+            when :confirmed then "border-l-success"
+            when :inactive then "border-l-base-300"
+            when :waiting then "border-l-primary"
+            end
+          end %>
       <li class="card bg-base-100 border-l-4 <%= border_color %> border-base-300 shadow-sm w-full md:w-80 transition hover:shadow-lg hover:scale-105 <%= "opacity-50" unless speaker.active? %>">
         <%= link_to families_speaker_posts_path(speaker), class: "card-body" do %>
           <div class="flex items-center gap-3">
@@ -83,7 +88,7 @@
             </div>
           </div>
 
-            <% if speaker.status == :needs_read %>
+            <% if speaker.status == :needs_read && speaker.notifications_enabled %>
               <div role="alert" class="alert bg-base-200 text-base-content">
                 <span><%= speaker.posts.order(created_at: :desc).first&.theme&.title %>に答えました</span>
               </div>
@@ -98,13 +103,13 @@
               </div>
             <% end %>
 
-            <% if speaker.status == :needs_attention %>
+            <% if speaker.status == :needs_attention && speaker.notifications_enabled %>
               <div role="alert" class="alert alert-error alert-soft">
                 <span>今日はまだ届いていません</span>
               </div>
             <% end %>
 
-            <% if speaker.status == :confirmed %>
+            <% if speaker.status == :confirmed && speaker.notifications_enabled %>
               <div role="alert" class="alert bg-base-200 text-base-content">
                 <span><%= speaker.posts.order(created_at: :desc).first&.theme&.title %>に答えました</span>
               </div>
@@ -122,7 +127,7 @@
               </div>
             <% end %>
 
-            <% if speaker.status == :waiting %>
+            <% if speaker.status == :waiting && speaker.notifications_enabled %>
               <div role="alert" class="alert bg-primary/10 text-primary">
                 <span>今日はまだ届いていません。</span>
               </div>
