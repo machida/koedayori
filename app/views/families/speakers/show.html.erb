@@ -6,8 +6,8 @@
             <%= speaker_qrcode %>
         </div>
         <div class="flex flex-col items-center gap-2 mt-4 max-w-xs mx-auto">
-            <%= link_to "LINEで送る", "https://line.me/R/msg/text/?#{ERB::Util.url_encode("こえだよりの吹き込みページはこちら\n#{speaker_url(@speaker.slug)}")}", target: "_blank", rel: "noopener", class: "btn btn-outline btn-primary" %>
-            <button type="button" data-controller="clipboard" data-clipboard-url-value="<%= speaker_url(@speaker.slug) %>" data-action="click->clipboard#copy" class="btn btn-outline">URLをコピー</button>
+            <%= link_to "LINEで送る", "https://line.me/R/msg/text/?#{ERB::Util.url_encode("こえだよりの吹き込みページはこちら\n#{speaker_share_url(@speaker)}")}", target: "_blank", rel: "noopener", class: "btn btn-outline btn-primary" %>
+            <button type="button" data-controller="clipboard" data-clipboard-url-value="<%= speaker_share_url(@speaker) %>" data-action="click->clipboard#copy" class="btn btn-outline">URLをコピー</button>
         </div>
         <div class="divider my-2"></div>
 

@@ -9,6 +9,7 @@ export default class extends Controller {
         "completeSection",
         "timer",
         "errorSection",
+        "micErrorSection",
         "retryBtn"
     ]
 
@@ -76,7 +77,7 @@ export default class extends Controller {
         })
         .catch(() => {
             clearInterval(this.timerId)
-            this.errorSectionTarget.classList.remove("hidden");
+            this.micErrorSectionTarget.classList.remove("hidden");
             this.recordSectionTarget.classList.add("hidden");
         });
     }

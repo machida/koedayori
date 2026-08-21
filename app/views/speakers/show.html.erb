@@ -8,6 +8,9 @@
         ⚠️うまく届きませんでした。<br>ご家族に相談するか、もう一度吹き込んでください。
         <button data-recording-target="retryBtn" data-action="click->recording#retry" class="btn btn-error">再度こえをふきこむ</button>
       </div>
+      <div class="text-xl font-bold mb-4 text-center hidden" data-recording-target="micErrorSection">
+        ⚠️画面にマイクが内蔵されていません。画面右上の「...」から「他のブラウザで開く」を選んでご利用ください
+      </div>
       <p class="text-3xl font-bold border-2 border-primary rounded-full px-6 py-2 block mb-4 text-center"><%= @theme.title %></p>
       <div data-recording-target="recordSection" class="text-center">
         <button data-recording-target="toggleBtn" data-action="click->recording#toggle" class="w-64 h-64 rounded-full bg-success">

@@ -23,7 +23,7 @@
         <div>
         <div>セットアップ画面</div>
         <div class="text-xs opacity-60">こちらでご家族の吹き込み画面のURLを確認できます。<br>
-        <p><%= speaker_url(@speaker.slug) %></p></div>
+        <p><%= speaker_share_url(@speaker) %></p></div>
         </div>
         <%= link_to "セットアップ画面", families_speaker_path(@speaker), class: "sm:ml-auto" %>
     </li>
