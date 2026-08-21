@@ -5,13 +5,13 @@
   <%= Time.zone.now.strftime("%Y/%m/%d %H:%M") %>
   <div class="divider"></div>
   <% unless current_family.speakers.empty? %>
-    <h2 class="text-lg font-bold mb-3">こえだより の しくみ</h2>
 
-  <details class="collapse collapse-arrow bg-base-100 border border-base-300 mt-4 mb-4" open>
+  <details class="collapse collapse-arrow bg-base-100 border border-base-300 mt-4 mb-4" open data-controller="dismissible" data-dismissible-target="details">
     <summary class="collapse-title">はじめに、２つの役割を知ってください。</summary>
     <div class="collapse-content">
       <div class="flex flex-col items-center gap-2 py-2 text-center">
         <div class="flex flex-col items-center gap-1">
+          <h2 class="text-lg font-bold mb-3">こえだより の しくみ</h2>
           <div class="bg-primary/10 rounded-full p-3 mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-primary">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
@@ -51,12 +51,12 @@
             <span>家族の誰かが声を聞くと、「安否確認」ができたことになります</span>
           </div>
         </div>
+        <button data-dismissible-target="button" data-action="click->dismissible#click" class="btn btn-soft mt-4 mb-4" >今後表示しない</button>
       </div>
     </div>
   </details>
-
-
   <% end %>
+
   <div class="mb-4">
     <%= current_family.speakers.empty? ? "まずは以下のボタンより、こえを届ける人を登録してください。": ""%>
   </div>
