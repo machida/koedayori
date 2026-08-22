@@ -3,17 +3,18 @@
   <%= render "shared/success_messages", messages: [flash[:notice]].compact %>
     <%= render "shared/page_title", text: "こえだよりの設定" %>
     <%= form_with url: families_settings_path, method: :patch do |form| %>
+    <% speaker = current_family.speakers.first %>
 
 <fieldset class="fieldset bg-base-100 border border-base-300 rounded-box p-4">
   <legend class="fieldset-legend">通知</legend>
   <ul class="list bg-base-100 rounded-box">
     <li class="list-row items-center">
       <div>こえが届いたら画面で知らせる</div>
-      <div class="justify-self-end"><%= form.check_box :notifications_enabled, class: "toggle sm:ml-auto" %></div>
+      <div class="justify-self-end"><%= form.check_box :notifications_enabled, class: "toggle sm:ml-auto", checked: speaker&.notifications_enabled %></div>
     </li>
     <li class="list-row items-center">
-      <div>何時までに届かなければ画面上で知らせるか</div>
-      <div class="justify-self-end"><%= form.select :notify_at, (0..23).map { |h| "#{h}:00" } ,{selected: "15:00"}, {class: "select sm:ml-auto"} %></div>
+      <div class="min-w-0">何時までに届かなければ画面上で知らせるか</div>
+      <div class="justify-self-end"><%= form.select :notify_at, (0..23).map { |h| "#{h}:00" } ,{selected: speaker&.notify_at&.strftime("%H:%M") }, {class: "select sm:ml-auto"} %></div>
     </li>
   </ul>
 </fieldset>
@@ -47,7 +48,8 @@
   </ul>
 </fieldset>
 
-<%= form.submit "設定を更新する", class: "btn btn-primary mt-4" %>
+  <%= form.submit "設定を更新する", class: "btn btn-primary mt-4" %>
+  <div class="divider"></div>
 
 <fieldset class="fieldset bg-base-200 border border-base-300 rounded-box p-4">
   <legend class="fieldset-legend">停止設定</legend>
