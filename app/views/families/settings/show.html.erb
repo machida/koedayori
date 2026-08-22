@@ -46,7 +46,21 @@
     </li>
   </ul>
 </fieldset>
-  <%= form.submit "設定を更新する", class: "btn btn-primary mt-4" %>
+
+<%= form.submit "設定を更新する", class: "btn btn-primary mt-4" %>
+
+<fieldset class="fieldset bg-base-200 border border-base-300 rounded-box p-4">
+  <legend class="fieldset-legend">停止設定</legend>
+  <ul class="list bg-base-200 rounded-box" >
+    <% current_family.speakers.each do |speaker| %>
+    <li class="list-row items-center">
+      <div><%= speaker.name %></div>
+      <div class="justify-self-end"><%= link_to "受け取りを停止する", deactivate_families_speaker_path(speaker), data: { turbo_method: :patch, turbo_confirm: "本当に停止してよろしいですか？二度と戻せません。" }  %></div>
+    </li>
+    <% end %>
+  </ul>
+</fieldset>
+
   <% end %>
   <div class="divider"></div>
   <%= link_to "退会する", new_families_withdrawal_path, class: "text-error" %>
