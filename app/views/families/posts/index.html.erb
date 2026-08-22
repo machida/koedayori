@@ -1,16 +1,16 @@
-<% content_for(:title, "#{@speaker.name}のこえ一覧｜こえだより") %>
+<% content_for(:title, "#{@speaker.name}さんのこえ一覧｜こえだより") %>
 <div class="w-full">
-  <%= render "shared/page_title", text: "#{@speaker.name}のこえ" %>
+  <%= render "shared/page_title", text: "#{@speaker.name}さんのこえを聞きましょう" %>
 
 <div class="posts-list">
   <% @posts.order(created_at: :desc).each do |post| %>
     <div class="posts-item card bg-white shadow-sm m-4 p-4 flex flex-row justify-between items-center" data-controller="playback" data-playback-post-id-value="<%= post.id %>">
       <div class="readstatus flex flex-col items-start gap-1 shrink-0">
         <div data-playback-target="readBadge" class="badge <%= post.played_at? ? "badge-success" : "badge-error" %>">
-          <%= post.played_at? ? "既読" : "未読" %>
+          <%= post.played_at? ? "誰かがもう聞きました" : "まだ確認されていません" %>
         </div>
         <div class="text-sm"><%= post.created_at.strftime("%Y/%m/%d %H:%M") %></div>
-        <div class="text-sm"><%= post.theme&.title %></div>
+        <span class="text-m font-semibold"><%= post.theme&.title %></span>
       </div>
 
       <div class="player flex-1 min-w-0 ml-4">
@@ -31,7 +31,10 @@
       </div>
     </div>
   <% end %>
-
+  <% if @posts.first == nil %>
+  まだこえの吹き込みがありません。
+  <%= link_to "こちらから登録をお願いしてみましょう。", families_speaker_path(@speaker), class: "underline" %>
+  <% end %>
   <%= paginate @posts %>
 
 </div>
