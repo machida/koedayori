@@ -14,7 +14,7 @@
     </li>
     <li class="list-row items-center">
       <div class="min-w-0">何時までに届かなければ画面上で知らせるか</div>
-      <div class="justify-self-end"><%= form.select :notify_at, (0..23).map { |h| "#{h}:00" } ,{selected: speaker&.notify_at&.strftime("%H:%M") }, {class: "select sm:ml-auto"} %></div>
+      <div class="justify-self-end"><%= form.select :notify_at, (0..23).map { |h| format("%02d:00", h) } ,{selected: speaker&.notify_at&.strftime("%H:%M") }, {class: "select sm:ml-auto"} %></div>
     </li>
   </ul>
 </fieldset>
