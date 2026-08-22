@@ -10,11 +10,11 @@
   <ul class="list bg-base-100 rounded-box">
     <li class="list-row items-center">
       <div>こえが届いたら画面で知らせる</div>
-      <div class="justify-self-end"><%= form.check_box :notifications_enabled, class: "select sm:ml-auto w-24", checked: speaker&.notifications_enabled %></div>
+      <div class="justify-self-end"><%= form.check_box :notifications_enabled, class: "toggle sm:ml-auto", checked: speaker&.notifications_enabled %></div>
     </li>
     <li class="list-row items-center">
       <div class="min-w-0">何時までに届かなければ画面上で知らせるか</div>
-      <div class="justify-self-end"><%= form.select :notify_at, (0..23).map { |h| format("%02d:00", h) } ,{selected: speaker&.notify_at&.strftime("%H:%M") }, {class: "select sm:ml-auto"} %></div>
+      <div class="justify-self-end"><%= form.select :notify_at, (0..23).map { |h| format("%02d:00", h) } ,{selected: speaker&.notify_at&.strftime("%H:%M") }, {class: "select sm:ml-auto w-24"} %></div>
     </li>
   </ul>
 </fieldset>
