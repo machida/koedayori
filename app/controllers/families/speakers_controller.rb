@@ -1,5 +1,6 @@
 class Families::SpeakersController < Families::ApplicationController
   def index
+    @speakers = current_family.speakers.includes(posts: :theme).order(active: :desc)
   end
 
   def show
