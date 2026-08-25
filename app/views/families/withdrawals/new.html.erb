@@ -2,15 +2,11 @@
 <div class="w-full flex justify-center items-center">
   <div class="card flex-col items-center gap-8 p-6 bg-base-100 border border-base-300 w-full max-w-2xl">
   <%= render "shared/page_title", text: "退会のお手続き", margin: "mb-1" %>
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-12 w-12 text-error stroke-current mb-1">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-  </svg>
+  <%= icon("exclamation-circle", css_class: "h-12 w-12 text-error stroke-current mb-1") %>
   <p>退会してよろしいでしょうか。</p>
 
   <div role="alert" class="alert alert-error">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-    </svg>
+    <%= icon("exclamation-circle", css_class: "h-6 w-6 shrink-0 stroke-current") %>
     <span>
       退会すると、以下の内容が全て失われます。
       <ul class="list-disc list-inside mt-2">

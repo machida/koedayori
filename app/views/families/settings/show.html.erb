@@ -25,7 +25,7 @@
     <%= link_to "＋ 追加する", new_families_speaker_path %>
   </legend>
   <ul class="list bg-base-100 rounded-box">
-    <% current_family.speakers.each do |speaker| %>
+    <% current_family.speakers.order(active: :desc).each do |speaker| %>
     <li class="list-row items-center">
       <div><%= speaker.name %></div>
       <div class="justify-self-end"><%= link_to "吹き込みの準備", families_speaker_path(speaker) %></div>
@@ -54,7 +54,7 @@
 <fieldset class="fieldset bg-base-200 border border-base-300 rounded-box p-4">
   <legend class="fieldset-legend">停止設定</legend>
   <ul class="list bg-base-200 rounded-box" >
-    <% current_family.speakers.each do |speaker| %>
+    <% current_family.speakers.order(active: :desc).each do |speaker| %>
     <li class="list-row items-center">
       <div><%= speaker.name %></div>
       <div class="justify-self-end"><%= link_to "受け取りを停止する", deactivate_families_speaker_path(speaker), data: { turbo_method: :patch, turbo_confirm: "本当に停止してよろしいですか？二度と戻せません。" }  %></div>

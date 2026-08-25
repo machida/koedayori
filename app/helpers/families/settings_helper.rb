@@ -1,2 +1,0 @@
-module Families::SettingsHelper
-end

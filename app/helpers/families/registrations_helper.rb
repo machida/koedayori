@@ -1,2 +1,0 @@
-module Families::RegistrationsHelper
-end
