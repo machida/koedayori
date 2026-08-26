@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :settings, only: [ :show, :update ]
     resources :withdrawals, only: [ :new, :create ]
     post "playbacks/:post_id" => "playbacks#create"
-    resources :speakers, only: [ :index, :new, :create, :show, :edit, :update ] do
+    resources :speakers, only: [ :index, :new, :create, :show ] do
       resources :posts, only: [ :index ]
       member do
         patch "deactivate"

@@ -7,26 +7,13 @@ class Families::SpeakersController < Families::ApplicationController
     @speaker = current_family.speakers.find(params[:id])
   end
 
-  def update
-    @speaker = current_family.speakers.find(params[:id])
-    if @speaker.update(speakers_params)
-      redirect_to families_speakers_path
-    else
-      render :edit
-    end
-  end
-
   def deactivate
     @speaker = current_family.speakers.find(params[:id])
     if @speaker.update(active: false)
       redirect_to families_speakers_path
     else
-      render :edit
+      redirect_to families_speaker_path(@speaker), alert: "受け取りの停止に失敗しました"
     end
-  end
-
-  def edit
-    @speaker = current_family.speakers.find(params[:id])
   end
 
   def new

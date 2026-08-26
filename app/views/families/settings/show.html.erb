@@ -6,43 +6,36 @@
     <% speaker = current_family.speakers.first %>
 
 <fieldset class="fieldset bg-base-100 border border-base-300 rounded-box p-4">
-  <legend class="fieldset-legend">通知</legend>
+  <legend class="fieldset-legend">こえが届いていないときのお知らせ</legend>
   <ul class="list bg-base-100 rounded-box">
     <li class="list-row items-center">
-      <div>こえが届いたら画面で知らせる</div>
-      <div class="justify-self-end"><%= form.check_box :notifications_enabled, class: "toggle sm:ml-auto", checked: speaker&.notifications_enabled %></div>
-    </li>
-    <li class="list-row items-center">
-      <div class="min-w-0">何時までに届かなければ画面上で知らせるか</div>
+      <div class="min-w-0">こえが何時までに届かなければ画面上で知らせるか</div>
       <div class="justify-self-end"><%= form.select :notify_at, (0..23).map { |h| format("%02d:00", h) } ,{selected: speaker&.notify_at&.strftime("%H:%M") }, {class: "select sm:ml-auto w-24"} %></div>
     </li>
   </ul>
 </fieldset>
 
 <fieldset class="fieldset bg-base-100 border border-base-300 rounded-box p-4">
-  <legend class="fieldset-legend flex justify-between w-full">
-    <span>こえを届ける家族</span>
-    <%= link_to "＋ 追加する", new_families_speaker_path %>
-  </legend>
-  <ul class="list bg-base-100 rounded-box">
-    <% current_family.speakers.order(active: :desc).each do |speaker| %>
-    <li class="list-row items-center">
-      <div><%= speaker.name %></div>
-      <div class="justify-self-end"><%= link_to "こえの録音の準備", families_speaker_path(speaker) %></div>
-    </li>
-    <% end %>
-  </ul>
+  <legend class="fieldset-legend">こえを届ける家族</legend>
+    <ul class="list bg-base-100 rounded-box">
+      <% current_family.speakers.order(active: :desc).each do |speaker| %>
+      <li class="list-row items-center">
+        <div><%= speaker.name %></div>
+        <div class="justify-self-end"><%= link_to "こえの録音の準備", families_speaker_path(speaker), class: "btn btn-outline btn-sm" %></div>
+      </li>
+      <% end %>
+    </ul>
 </fieldset>
 
 <fieldset class="fieldset bg-base-100 border border-base-300 rounded-box p-4">
   <legend class="fieldset-legend">見守る家族</legend>
   <ul class="list bg-base-100 rounded-box">
     <li class="list-row items-center">
-      <div>あいことばの修正</div>
+      <div>あいことばの変更</div>
       <div class="justify-self-end"><%= form.text_field :aikotoba, class: "input" %></div>
     </li>
     <li class="list-row items-center">
-      <div>メールアドレスの修正</div>
+      <div>メールアドレスの変更</div>
       <div class="justify-self-end"><%= form.text_field :email, class: "input" %></div>
     </li>
   </ul>
@@ -57,7 +50,7 @@
     <% current_family.speakers.order(active: :desc).each do |speaker| %>
     <li class="list-row items-center">
       <div><%= speaker.name %></div>
-      <div class="justify-self-end"><%= link_to "受け取りを停止する", deactivate_families_speaker_path(speaker), data: { turbo_method: :patch, turbo_confirm: "本当に停止してよろしいですか？二度と戻せません。" }  %></div>
+      <div class="justify-self-end"><%= link_to "受け取りを停止する", deactivate_families_speaker_path(speaker), class: "btn btn-outline btn-error btn-sm", data: { turbo_method: :patch, turbo_confirm: "本当に停止してよろしいですか？二度と戻せません。" }  %></div>
     </li>
     <% end %>
   </ul>
