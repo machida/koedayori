@@ -2,8 +2,8 @@
 <div class="w-full flex justify-center items-center">
   <div class="card flex-col items-center gap-8 p-6 bg-base-100 border border-base-300 w-full max-w-2xl">
 
-    <%= render "shared/page_title", text: "ログイン" %>
-    <%= image_tag "koedayori_mv2.png", alt: "こえだよりのイメージ画像", class: "w-96" %>
+    <%= render "shared/page_title", text: "ログイン", margin: "mb-2" %>
+    <%= image_tag "koedayori_mv2.png", alt: "こえだよりのイメージ画像", class: "w-48" %>
     <%= render "shared/error_messages", messages: [flash[:alert]].compact %>
     <%= render "shared/success_messages", messages: [flash[:notice]].compact %>
 
@@ -17,8 +17,9 @@
         <%= form.label :password, class: "label text-base mb-4" %>
         <%= form.password_field :password , class: "input mb-4 w-full"%>
       </div>
-
-      <%= form.submit "ログイン", class: "btn btn-primary w-full" %>
+      <div class="flex justify-center">
+      <%= form.submit "ログイン", class: "btn btn-primary btn-lg" %>
+      </div>
     <% end %>
   </div>
 </div>

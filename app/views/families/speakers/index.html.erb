@@ -15,7 +15,7 @@
           <div class="bg-primary/10 rounded-full p-3 mb-2">
             <%= icon("user", css_class: "w-8 h-8 text-primary") %>
           </div>
-          <span class="badge badge-primary badge-lg my-2">こえを届ける人</span>
+          <span class="badge badge-primary badge-lg my-2">こえを届ける家族</span>
           <p class="text-xs text-base-content/70">例）おじいちゃん・おばあちゃん</p>
         </div>
 
@@ -33,7 +33,7 @@
           <div class="bg-warning/10 rounded-full p-3 mb-2">
             <%= icon("speaker-wave", css_class: "w-8 h-8 text-warning") %>
           </div>
-          <span class="badge badge-warning badge-lg my-2">こえを聞く人</span>
+          <span class="badge badge-warning badge-lg my-2">見守る家族</span>
           <p class="text-xs text-base-content/70">例）お子さん・お孫さん</p>
 
           <div role="alert" class="alert alert-info mt-4">
@@ -48,9 +48,9 @@
   <% end %>
 
   <div class="mb-4">
-    <%= current_family.speakers.empty? ? "まずは以下のボタンより、こえを届ける人を登録してください。": ""%>
+    <%= current_family.speakers.empty? ? "まずは以下のボタンより、見守りたい家族を登録してください。": ""%>
   </div>
-  <%= link_to "こえを届ける人を追加する", new_families_speaker_path, class: "btn btn-primary text-lg mb-6" %>
+  <%= link_to "＋　見守りたい家族を追加する", new_families_speaker_path, class: "btn btn-primary text-lg mb-6" %>
   <ul class="flex flex-col md:flex-row gap-4 flex-wrap items-stretch">
     <% @speakers.each do |speaker| %>
     <% latest_post = speaker.posts.max_by(&:created_at) %>
@@ -73,7 +73,7 @@
             </div>
             <div>
               <h2 class="card-title"><%= speaker.name %></h2>
-              <h3 class="text-primary text-xs">こえを届ける人</h3>
+              <h3 class="text-primary text-xs">こえを届ける家族</h3>
             </div>
           </div>
 
