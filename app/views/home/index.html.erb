@@ -1,49 +1,49 @@
 <div class="flex flex-col w-full">
-  <div class="flex flex-col md:flex-row items-center gap-8 py-6">
-    <div class="flex-1">
-      <%= image_tag "koedayori_mv.png", alt: "こえだよりのイメージ画像", class: "w-full rounded-2xl mx-auto" %>
+  <div class="flex flex-col md:flex-row items-center gap-8 py-6 justify-center">
+    <div class="flex-none">
+      <%= image_tag "koedayori_mv.png", alt: "こえだよりのイメージ画像", class: "max-w-sm rounded-2xl mx-auto" %>
     </div>
-    <div class="flex-1 text-center md:text-left">
+    <div class="flex-none text-center md:text-left">
       <h2 class="text-4xl font-bold mb-4 text-primary">大切な人の「こえ」で<br>まいにちの安心を</h2>
-      <p class="text-lg mb-4">こえだよりは、「こえ」をふきこむだけで大切な人の「元気」を届ける見守りサービスです。</p>
+      <p class="text-base mb-4">こえだよりは、「こえ」をふきこむだけで<br>大切な人の「元気」を届ける見守りサービスです。</p>
       <%= link_to "無料で登録する", new_families_registration_path, class: "btn btn-primary mb-4 btn-lg" %>
       <%= link_to "ログインする", new_families_session_path, class: "btn btn-primary-content mb-4 btn-lg" %>
     </div>
   </div>
   <div class="w-screen relative left-1/2 -translate-x-1/2">
-    <h1 class="text-2xl font-bold mt-8 mb-4 text-center">こえだよりはこんなサービスです</h1>
+    <h1 class="text-xl font-bold mt-8 mb-4 text-center text-base-content/60">こえだよりはこんなサービスです</h1>
     <div class="flex flex-col md:flex-row items-center justify-center gap-8 pb-8 px-5">
       <div class="text-center max-w-xs">
         <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
           <%= icon("mic", css_class: "text-primary w-8 h-8") %>
         </div>
-        <h3 class="text-lg font-bold mb-4">1日1回、「こえ」をふきこむだけ</h3>
+        <h3 class="text-2xl font-bold mb-4">1日1回、「こえ」をふきこむだけ</h3>
         <p class="text-sm">見守りたいご家族はお題にそって「こえ」をふきこむだけ。文字入力は不要です。</p>
       </div>
       <div class="text-center max-w-xs">
         <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
           <%= icon("envelope", css_class: "text-primary w-8 h-8") %>
         </div>
-        <h3 class="text-lg font-bold mb-4">ご家族に「こえ」が届く</h3>
+        <h3 class="text-2xl font-bold mb-4">ご家族に「こえ」が届く</h3>
         <p class="text-sm">「こえ」は自動でご家族に届きます。「こえ」はダッシュボードに保存され、何度も聞き返せます。</p>
       </div>
       <div class="text-center max-w-xs">
         <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
           <%= icon("heart", css_class: "text-primary w-8 h-8") %>
         </div>
-        <h3 class="text-lg font-bold mb-4">あんしんの見守り</h3>
+        <h3 class="text-2xl font-bold mb-4">あんしんの見守り</h3>
         <p class="text-sm">未着や変化があればお知らせ。離れていても、しっかり見守れます。</p>
       </div>
     </div>
   </div>
 
   <div class="w-screen relative left-1/2 -translate-x-1/2 bg-base-300 py-8">
-    <h1 class="text-2xl font-bold mb-8 text-center">ご利用はかんたん3ステップ</h1>
+    <h1 class="text-xl font-bold mb-8 text-center text-base-content/60">ご利用はかんたん3ステップ</h1>
     <div class="flex flex-col md:flex-row items-center justify-center gap-4 px-5">
       <div class="text-center max-w-xs">
         <div class="flex items-center justify-center gap-2 mb-2">
           <span class="badge badge-primary badge-sm">1</span>
-          <h3 class="text-lg font-bold">アカウントを作成</h3>
+          <h3 class="text-2xl font-bold">アカウントを作成</h3>
         </div>
         <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2">
           <%= icon("chat-bubble", css_class: "text-primary w-8 h-8") %>
@@ -56,7 +56,7 @@
       <div class="text-center max-w-xs">
         <div class="flex items-center justify-center gap-2 mb-2">
           <span class="badge badge-primary badge-sm">2</span>
-          <h3 class="text-lg font-bold">ご家族を追加</h3>
+          <h3 class="text-2xl font-bold">ご家族を追加</h3>
         </div>
         <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2">
           <%= icon("user-plus", css_class: "text-primary w-8 h-8") %>
@@ -69,7 +69,7 @@
       <div class="text-center max-w-xs">
         <div class="flex items-center justify-center gap-2 mb-2">
           <span class="badge badge-primary badge-sm">3</span>
-          <h3 class="text-lg font-bold">「こえ」のふきこみを開始</h3>
+          <h3 class="text-2xl font-bold">「こえ」のふきこみを開始</h3>
         </div>
         <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2">
           <%= icon("mic", css_class: "text-primary w-8 h-8") %>
