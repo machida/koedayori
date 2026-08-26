@@ -20,7 +20,7 @@
         </div>
 
         <%= icon("arrow-down", css_class: "w-5 h-5 text-base-content/50") %>
-        <p class="text-sm font-medium">毎日、専用ページからこえを吹き込む</p>
+        <p class="text-sm font-medium">毎日、専用ページからこえを録音する</p>
 
         <div class="bg-primary rounded-full px-4 py-2">
           <%= image_tag "koedayori_logo_white.png", alt: "こえだより", class: "h-6" %>
@@ -47,10 +47,10 @@
   </details>
   <% end %>
 
-  <div class="mb-4">
-    <%= current_family.speakers.empty? ? "まずは以下のボタンより、見守りたい家族を登録してください。": ""%>
-  </div>
+  <% if current_family.speakers.empty? %>
+  <div class="mb-4">まずは以下のボタンより、見守りたい家族を登録してください。</div>
   <%= link_to "＋　見守りたい家族を追加する", new_families_speaker_path, class: "btn btn-primary text-lg mb-6" %>
+  <% end %>
   <ul class="flex flex-col md:flex-row gap-4 flex-wrap items-stretch">
     <% @speakers.each do |speaker| %>
     <% latest_post = speaker.posts.max_by(&:created_at) %>
@@ -92,7 +92,7 @@
 
             <% if speaker.status == :needs_attention && speaker.notifications_enabled %>
               <div role="alert" class="alert alert-error alert-soft">
-                <span>今日はまだ届いていません</span>
+                <span><%= speaker.name %>さんからのこえは、今日はまだ届いていません</span>
               </div>
             <% end %>
 
@@ -116,4 +116,7 @@
       </li>
     <% end %>
   </ul>
+  <% unless current_family.speakers.empty? %>
+  <%= link_to "＋　見守りたい家族を追加する", new_families_speaker_path, class: "btn btn-primary text-lg mt-6" %>
+  <% end %>
 </div>

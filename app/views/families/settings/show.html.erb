@@ -1,5 +1,5 @@
 <% content_for(:title, "こえだよりの設定｜こえだより") %>
-<div class="w-full">
+<div class="w-full max-w-2xl mx-auto">
   <%= render "shared/success_messages", messages: [flash[:notice]].compact %>
     <%= render "shared/page_title", text: "こえだよりの設定" %>
     <%= form_with url: families_settings_path, method: :patch do |form| %>
@@ -21,21 +21,21 @@
 
 <fieldset class="fieldset bg-base-100 border border-base-300 rounded-box p-4">
   <legend class="fieldset-legend flex justify-between w-full">
-    <span>こえを届ける人</span>
+    <span>こえを届ける家族</span>
     <%= link_to "＋ 追加する", new_families_speaker_path %>
   </legend>
   <ul class="list bg-base-100 rounded-box">
     <% current_family.speakers.order(active: :desc).each do |speaker| %>
     <li class="list-row items-center">
       <div><%= speaker.name %></div>
-      <div class="justify-self-end"><%= link_to "吹き込みの準備", families_speaker_path(speaker) %></div>
+      <div class="justify-self-end"><%= link_to "こえの録音の準備", families_speaker_path(speaker) %></div>
     </li>
     <% end %>
   </ul>
 </fieldset>
 
 <fieldset class="fieldset bg-base-100 border border-base-300 rounded-box p-4">
-  <legend class="fieldset-legend">こえを聞く人</legend>
+  <legend class="fieldset-legend">見守る家族</legend>
   <ul class="list bg-base-100 rounded-box">
     <li class="list-row items-center">
       <div>あいことばの修正</div>

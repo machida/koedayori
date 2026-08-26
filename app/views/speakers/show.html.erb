@@ -1,21 +1,21 @@
-<% content_for(:title, "こえの吹き込み｜こえだより") %>
+<% content_for(:title, "こえの録音｜こえだより") %>
 <div class="flex items-start justify-center w-full min-h-screen">
   <div class="card bg-white rounded-2xl shadow-sm p-8 text-center">
     <div data-controller="recording" data-recording-slug-value="<%= params[:slug] %>">
-      <h1 class="font-bold text-4xl text-center mb-4">こえの吹き込み</h1>
+      <h1 class="font-bold text-4xl text-center mb-4">こえの録音</h1>
       <p class="text-2xl font-bold mb-4 text-center">話す内容</p>
       <div class="text-xl font-bold mb-4 text-center hidden" data-recording-target="errorSection">
-        ⚠️うまく届きませんでした。<br>ご家族に相談するか、もう一度吹き込んでください。
-        <button data-recording-target="retryBtn" data-action="click->recording#retry" class="btn btn-error">再度こえをふきこむ</button>
+        ⚠️うまく届きませんでした。<br>ご家族に相談するか、もう一度録音してください。
+        <button data-recording-target="retryBtn" data-action="click->recording#retry" class="btn btn-error">再度こえを録音する</button>
       </div>
       <div class="text-xl font-bold mb-4 text-center hidden" data-recording-target="micErrorSection">
-        ⚠️画面にマイクが内蔵されていません。画面右上の「...」から「他のブラウザで開く」を選んでご利用ください
+        ⚠️画面にマイクが内蔵されていません。画面右上の「...」から「他のブラウザで開く」を選んでご利用ください。
       </div>
       <p class="text-3xl font-bold border-2 border-primary rounded-full px-6 py-2 block mb-4 text-center"><%= @theme.title %></p>
       <div data-recording-target="recordSection" class="text-center">
         <button data-recording-target="toggleBtn" data-action="click->recording#toggle" class="w-64 h-64 rounded-full bg-success">
             <%= icon("mic", css_class: "text-white w-18 h-18 mx-auto mb-2") %>
-          <p class="text-white text-2xl font-bold">ここを押して<br>こえをふきこむ</p>
+          <p class="text-white text-2xl font-bold">ここを押して<br>こえを録音する</p>
         </button>
 
         <div data-recording-target="timer" class="text-center text-2xl mt-4"></div>

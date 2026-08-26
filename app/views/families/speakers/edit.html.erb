@@ -22,7 +22,7 @@
     <li class="list-row sm:items-center flex-col flex sm:flex-row">
         <div>
         <div>セットアップ画面</div>
-        <div class="text-xs opacity-60">こちらでご家族の吹き込み画面のURLを確認できます。<br>
+        <div class="text-xs opacity-60">こちらでご家族の録音画面のURLを確認できます。<br>
         <p><%= speaker_share_url(@speaker) %></p></div>
         </div>
         <%= link_to "セットアップ画面", families_speaker_path(@speaker), class: "sm:ml-auto" %>
@@ -33,7 +33,7 @@
     <li class="list-row sm:items-center flex-col flex sm:flex-row">
         <div>
         <div><%= form.label :notifications_enabled %></div>
-        <div class="text-xs opacity-60">ダッシュボードで未着通知をするか指定できます。指定しないことも可能です。</div>
+        <div class="text-xs opacity-60">「今日のこえ」で未着通知をするか指定できます。指定しないことも可能です。</div>
         </div>
         <%= form.checkbox :notifications_enabled, class: "toggle sm:ml-auto" %>
     </li>
@@ -43,7 +43,7 @@
     <li class="list-row flex-col flex sm:flex-row">
         <div>
         <div><%= form.label :notify_at %></div>
-        <div class="text-xs opacity-60">何時までに吹き込みをするかの通知時刻を指定してください。指定しないことも可能です。</div>
+        <div class="text-xs opacity-60">何時までにこえが届いているかの通知時刻を指定してください。指定しないことも可能です。</div>
         </div>
         <%= form.select :notify_at, (0..23).map { |h| "#{h}:00" } ,{selected: "#{@speaker.notify_at.hour}:00"}, {class: "select sm:ml-auto"} %>
     </li>

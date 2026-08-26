@@ -30,8 +30,8 @@
     </div>
   <% end %>
   <% if @posts.first == nil %>
-  まだこえの吹き込みがありません。
-  <%= link_to "こちらから登録をお願いしてみましょう。", families_speaker_path(@speaker), class: "underline" %>
+  まだ今日のこえが録音されていません。
+  <%= link_to "#{@speaker.name}さんに、こえの録音をお願いする方法を確認しましょう。", families_speaker_path(@speaker), class: "underline" %>
   <% end %>
   <%= paginate @posts %>
 
