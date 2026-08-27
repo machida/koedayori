@@ -1,6 +1,3 @@
-> 事務連絡
-> https://www.figma.com/design/UOzcJ0C4aLmH0zqgRIC602/%E3%81%93%E3%81%88%E3%81%A0%E3%82%88%E3%82%8A%E3%83%A1%E3%83%A2?node-id=0-1&p=f&t=Nc6ieaaJLGiyWvV2-0
-
 # こえだより
 
 遠方に住む祖父母の「今日の声」を、家族の思い出として残す見守りアプリ
