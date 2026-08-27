@@ -43,7 +43,7 @@
       Theme.find_or_create_by!(title: theme)
     end
 
-# テスト用アカウントはこちら（aikotoba:kojifamily pass:kojikoji）
+    # テスト用アカウントはこちら（aikotoba:kojifamily pass:kojikoji）
     Family.find_or_create_by!(email: "koji@koji.com", aikotoba: "kojifamily") do |family|
       family.password = "kojikoji"
     end
