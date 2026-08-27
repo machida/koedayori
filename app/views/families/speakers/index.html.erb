@@ -60,15 +60,9 @@
   <ul class="flex flex-col md:flex-row gap-4 flex-wrap items-stretch">
     <% @speakers.each do |speaker| %>
     <% latest_post = speaker.posts.max_by(&:created_at) %>
-      <% border_color = if !speaker.notifications_enabled
-            "border-base-300"
-          else
-            case speaker.status
-            when :needs_attention then "border-error"
-            when :inactive then "border-base-300"
-            when :waiting then "border-base-300"
-            end
-          end %>
+      <% needs_attention = speaker.status == :needs_attention && speaker.notifications_enabled %>
+      <% border_color = needs_attention ? "border-error" : "border-base-300" %>
+
       <li class="card bg-base-100 border <%= border_color %> shadow-sm w-full md:w-80 transition hover:shadow-lg hover:scale-105 <%= "opacity-50" unless speaker.active? %>">
         <%= link_to families_speaker_posts_path(speaker), class: "card-body" do %>
           <h2 class="card-title"><%= speaker.name %></h2>
@@ -82,7 +76,7 @@
               <p class="text-xs text-base-content/60">まだ録音がありません</p>
             <% end %>
 
-            <% if speaker.status == :needs_attention && speaker.notifications_enabled %>
+            <% if needs_attention %>
               <div role="alert" class="alert alert-error alert-soft">
                 <span><%= speaker.name %>さんからのこえは、今日はまだ届いていません</span>
               </div>
