@@ -1,30 +1,32 @@
 <% content_for(:title, "#{@speaker.name}さんのこえ一覧｜こえだより") %>
-<div class="w-full">
-  <%= render "shared/page_title", text: "#{@speaker.name}さんのこえを聞きましょう" %>
+<div class="w-full max-w-2xl mx-auto">
+  <%= render "shared/page_title", text: "#{@speaker.name}さんのこえ一覧" %>
 
-<div class="posts-list">
+<div class="posts-list flex flex-col gap-4">
   <% @posts.order(created_at: :desc).each do |post| %>
-    <div class="posts-item card bg-white shadow-sm m-4 p-4 flex flex-row justify-between items-center" data-controller="playback" data-playback-post-id-value="<%= post.id %>">
-      <div class="readstatus flex flex-col items-start gap-1 shrink-0">
-        <div data-playback-target="readBadge" class="badge <%= post.played_at? ? "badge-success" : "badge-error" %>">
-          <%= post.played_at? ? "誰かがもう聞きました" : "まだ確認されていません" %>
-        </div>
+    <div class="posts-item card bg-white shadow-sm p-4 flex flex-col md:flex-row justify-between items-stretch md:items-center" data-controller="playback" data-playback-post-id-value="<%= post.id %>">
+      <div class="readstatus flex flex-col items-start gap-1 shrink-0 w-48">
         <div class="text-sm"><%= post.created_at.strftime("%Y/%m/%d %H:%M") %></div>
         <span class="text-m font-semibold"><%= post.theme&.title %></span>
       </div>
 
-      <div class="player flex-1 min-w-0 ml-4">
+      <div class="player flex-1 min-w-0 mt-4 md:mt-0 md:ml-4">
         <div class="flex items-center gap-2 w-full bg-base-200 px-4 py-2 rounded-full">
           <button data-playback-target="playButton" data-action="click->playback#togglePlay" class="btn btn-circle btn-primary w-12 h-12 rounded-full flex items-center justify-center" aria-label="再生">
             <%= icon("play", css_class: "w-5 h-5") %>
           </button>
-          <div class="relative flex-1 h-2 bg-base-300 rounded-full">
+          <div class="relative flex-1 h-3 bg-base-300 rounded-full">
             <div data-playback-target="progressBar" class="absolute inset-y-0 left-0 h-full bg-primary rounded-full w-0 pointer-events-none">
-              <div class="w-3 h-3 rounded-full bg-primary absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 hidden" data-playback-target="seekHandle"></div>
+              <div class="w-4 h-4 rounded-full bg-primary border-2 border-white shadow absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2" data-playback-target="seekHandle"></div>
             </div>
-            <input type="range" min=0 max=100 value=0 data-playback-target="seekInput" data-action="input->playback#seek" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+            <input type="range" min=0 max=100 value=0 aria-label="再生位置" data-playback-target="seekInput" data-action="input->playback#seek" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-full">
           </div>
-          <%= audio_tag(post.audio, hidden: true, data: { playback_target: "audio", action: "play->playback#markPlayed timeupdate->playback#updateProgress ended->playback#resetButton"}) %>
+          <div class="flex items-center gap-1 text-xs text-base-content/70 shrink-0">
+            <span data-playback-target="currentTime">0:00</span>
+            <span>/</span>
+            <span data-playback-target="duration">0:00</span>
+          </div>
+          <%= audio_tag(post.audio, hidden: true, data: { playback_target: "audio", action: "timeupdate->playback#updateProgress ended->playback#resetButton loadedmetadata->playback#showDuration"}) %>
         </div>
       </div>
     </div>
@@ -35,6 +37,10 @@
   <% end %>
   <%= paginate @posts %>
 
+  <%= link_to families_speakers_path, class: "btn btn-ghost mt-4" do %>
+    <%= icon("chevron-right", css_class: "w-4 h-4 rotate-180") %>
+    今日のこえに戻る
+  <% end %>
 </div>
 
 </div>

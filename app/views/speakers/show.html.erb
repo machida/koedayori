@@ -2,8 +2,8 @@
 <div class="flex items-start justify-center w-full min-h-screen">
   <div class="card bg-white rounded-2xl shadow-sm p-8 text-center">
     <div data-controller="recording" data-recording-slug-value="<%= params[:slug] %>">
-      <h1 class="font-bold text-4xl text-center mb-4">こえの録音</h1>
-      <p class="text-2xl font-bold mb-4 text-center">話す内容</p>
+      <h1 class="font-bold text-4xl text-center mb-8">こえの録音</h1>
+      <p class="text-2xl font-bold mb-2 text-center">話す内容</p>
       <div class="text-xl font-bold mb-4 text-center hidden" data-recording-target="errorSection">
         ⚠️うまく届きませんでした。<br>ご家族に相談するか、もう一度録音してください。
         <button data-recording-target="retryBtn" data-action="click->recording#retry" class="btn btn-error">再度こえを録音する</button>
@@ -17,8 +17,9 @@
             <%= icon("mic", css_class: "text-white w-18 h-18 mx-auto mb-2") %>
           <p class="text-white text-2xl font-bold">ここを押して<br>こえを録音する</p>
         </button>
+        <p data-recording-target="startHint" class="text-sm text-base-content/60 mt-2">押すと録音が始まります</p>
 
-        <div data-recording-target="timer" class="text-center text-2xl mt-4"></div>
+        <div data-recording-target="timer" class="text-center text-sm text-base-content/50 mt-4"></div>
       </div>
         <div data-recording-target="completeSection" class="hidden">
           <div class="relative w-64 h-64 mx-auto">

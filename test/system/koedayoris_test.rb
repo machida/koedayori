@@ -7,6 +7,6 @@ class KoedayorisTest < ApplicationSystemTestCase
 
     visit speaker_path(speaker.slug)
 
-    assert_text "こえの吹き込み"
+    assert_text "こえの録音"
   end
 end

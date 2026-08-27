@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     resources :registrations, only: [ :new, :create ]
     resource :settings, only: [ :show, :update ]
     resources :withdrawals, only: [ :new, :create ]
-    post "playbacks/:post_id" => "playbacks#create"
     resources :speakers, only: [ :index, :new, :create, :show ] do
       resources :posts, only: [ :index ]
       member do

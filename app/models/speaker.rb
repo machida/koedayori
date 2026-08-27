@@ -23,19 +23,9 @@ class Speaker < ApplicationRecord
     posts.find { |post| post.created_at.to_date == Time.zone.today }
   end
 
-  def show_read_status?
-    active? && !notifications_needed?
-  end
-
-  def played?
-    today_post&.played_at?
-  end
-
   def status
     return :inactive unless active
     return :needs_attention if notifications_needed?
-    return :confirmed if played?
-    return :needs_read if today_post
     :waiting
   end
 

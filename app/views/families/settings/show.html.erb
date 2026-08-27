@@ -58,5 +58,9 @@
 
   <% end %>
   <div class="divider"></div>
-  <%= link_to "退会する", new_families_withdrawal_path, class: "text-error" %>
+  <%= link_to "退会する", new_families_withdrawal_path, class: "btn btn-outline btn-error btn-sm" %>
+  <%= link_to families_speakers_path, class: "btn btn-ghost mt-4" do %>
+    <%= icon("chevron-right", css_class: "w-4 h-4 rotate-180") %>
+    今日のこえに戻る
+  <% end %>
 </div>
